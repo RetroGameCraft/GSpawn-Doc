@@ -2,7 +2,7 @@
 
 ## What is GSpawn - Level Designer?
 
-GSpawn allows you to build and edit scenes inside the Unity Editor using a plethora of tools such as tile rules, curve spawn, modular snapping to name just a few. It can be used for creating modular and outdoor environments and tile worlds.
+GSpawn allows you to build and edit scenes inside the Unity Editor using a plethora of tools such as tile rules, curve spawn, modular snapping to name just a few. It can be used for creating modular & outdoor environments and tile worlds.
 
 ## Additional Info
 
@@ -28,6 +28,7 @@ For support, contact **octamodius@yahoo.com**
 The following assets are used in the screenshots and **are not part of the GSpawn - Level Designer package**:
 
 - [Multistory Dungeons](https://assetstore.unity.com/packages/3d/environments/dungeons/multistory-dungeons-33955) by [Mana Station](https://assetstore.unity.com/publishers/12379)
+- [Medieval Environment Pack](https://assetstore.unity.com/packages/3d/environments/historic/medieval-environment-pack-6859) by [Manufactura K4](https://assetstore.unity.com/publishers/585)
 - [Village Interiors Kit](https://assetstore.unity.com/packages/3d/environments/fantasy/village-interiors-kit-17033) by [3DForge](https://assetstore.unity.com/publishers/2970)
 - [Voxel Blocks Pack](https://assetstore.unity.com/packages/3d/environments/fantasy/voxel-blocks-pack-52227) by [Tsunoa](https://assetstore.unity.com/publishers/18023)
 
@@ -231,6 +232,8 @@ You can rotate the spawn guide using the following hotkeys:
 - **[Z]** - rotate around grid Z axis;
 
 All the hotkeys above will use the spawn guide pivot as the rotation pivot. If you wish to use the spawn guide bounds center as the pivot, you have to also hold down **[SHIFT]** while pressing the **X/Y/Z** buttons.
+
+You can press **[I]** to reset the object rotation to the rotation stored in the prefab asset
 
 When rotating the spawn guide with these hotkeys, the default rotation is **90**. If you wish to change the rotation step, open **Edit > Preferences...**
 
@@ -1028,6 +1031,134 @@ This will hide the renderers of the overlapping pillars so that a single pillar 
 As you can see, this is a manual step. When you paint/erase tiles, the same issue can appear again because new tiles are created so it is best to perform this step at the end, when your game level is finished.
 
 ### Props Spawn
+
+![](props_spawn_btn.png)
+
+The **Props Spawn** tool is great for populating your scenes with props. For example, you could use it to populate your terrains with trees, houses, fences, barrels and the like. You can also spawn directly on other mesh surfaces. If you are creating a modular environment, you could use this tool to spawn props on the floor or on the walls.
+
+In order to use, **double-click** on a prefab in the **Prefab Manager** window. This will activate the spawn guide and you can move it around in the scene. Instead of snapping to the grid (as is the case with the previous tools that were discussed), it will snap directly to mesh or terrain surfaces.
+
+The following hotkeys are available when working with **Props Spawn**:
+
+- **[SHIFT + mouse move]** - rotate the spawn guide around the surface normal if axis alignment is turned on; rotate around the grid Y axis if axis alignment is turned off;
+- **[CTRL + mouse move]** - scale the spawn guide;
+- **[ALT + mouse move]** - offset the spawn guide from the surface (useful for embedding on steep surfaces);
+- **[R]** - reset the offset applied by moving the mouse back to **0**;
+
+The **[X/Y/Z] & [SHIFT + X/Y/Z]** hotkeys are also available for rotating the spawn guide using the keyboard.  You can press **[I]** to reset the object rotation to the rotation stored in the prefab asset and **[O]** will reset the scale to the prefab scale.
+
+#### Axis Alignment
+
+Axis alignment refers to the idea of aligning one of the spawn guide's axes to the surface on which it resides. By default, it is turned off, but you can turn it on/off by either pressing **[SHIFT + A]** or by checking/unchecking the **Align axis** toggle in the Inspector:
+
+![](surface_snap_axis_controls_ui.png)
+
+If **Align axis** is checked, you also need to specify an alignment axis using the **Alignment axis** field. The alignment axis is considered to be the positive axis. If you wish to use the corresponding negative axis, check **Invert axis**.
+
+Typically, you will want to leave this off. For example, if you want to populate terrains with trees, axis alignment should be turned off. Trees grow upwards and they don't look right when aligned with the terrain surface. Houses also usually stand straight up.
+
+Axis alignment could be useful if for example you were placing objects on an incline or a ramp or some kind of decorative elements such as elongated crystals on top of rock surfaces.
+
+#### Surface Offset & Embed in Surface
+
+Although you can change the offset from the surface using the mouse, you can also use an implicit offset by changing the value of the **Implicit offset** field. This can be useful when placing objects on steep surfaces with axis alignment turned off in order to avoid floating.
+
+The field **Embed in surface** can sometimes help, but for objects that are more irregular at the base where they meet with the surface, it won't always avoid floating. In this case a combination of implicit offset and mouse applied offset should do the trick.
+
+The next image shows an example of a barrel placed on a steep terrain surface with and without **Embed in surface**:
+
+![](barrel_emebd_in_surface_ex.png)
+
+#### Surface Types & Surface Layers
+
+By default, every object in the scene can be used as a surface on which the spawn guide can sit. However, there may be times where you would like to ignore certain objects. For example, if you are placing props in a dense forest, you will most likely want to ignore the trees and snap to the terrain only.
+
+The **Surface types** field allows you to select the types of surface the spawn guide can sit on:
+
+![](props_spawn_surface_types.png)
+
+Another thing that you can do is to ignore certain surfaces based on the layer to which they are assigned. In this case, the **Surface layers** field can be used.
+
+#### Spawn Guide Randomization
+
+A useful feature when working with **Props Spawn** is **Spawn Guide Randomization**. This feature allows you to randomize the spawn guide's rotation, scale and prefab. The randomization parameters are applied after you spawn a new game object:
+
+1. **left-click** to spawn;
+2. object gets spawn with current rotation/scale/prefab;
+3. spawn guide is randomized;
+
+Randomization also works with [drag spawn](####Drag Spawn).
+
+---
+
+**Note: **This feature is also available when using **Modular Snap Spawn** although it is not as useful. Usually, the objects that you spawn with **Modular Snap Spawn** should keep their original size and rotation. For example, you definitely wouldn't want to randomize the scale of a wall piece or a floor. These were designed in a specific manner by the artist to allow for the easy construction of modular environments.
+
+---
+
+##### Rotation Randomization
+
+![](spawn_guide_rotation_rand_ui.png)
+
+In order to randomize the rotation, check the **Randomize rotation** toggle and then pick the randomization axis. The default is **Surface normal** which is what you will usually want for props placement.
+
+The **Randomization mode** field can be set to **Step** or **MinMax**. **Step** will apply a random multiple of the specified rotation step, whereas **MinMax** will generate a random rotation value in a specified interval.
+
+##### Scale randomization
+
+Check the **Randomize scale** toggle. This will cause 2 new fields to show up which will allow you to define a minimum and maximum scale value. Very useful for adding more variation to certain types of objects.
+
+##### Prefab Randomization
+
+Prefab randomization refers to the fact that **after** you spawn a new object, the spawn guide will pick a new prefab for the next spawn. Simply check the **Randomize prefab** toggle and then select the [random prefab profile](##Random Prefab Profiles) that contains all the prefabs that you wish to use.
+
+#### Drag Spawn
+
+When working with the **Props Spawn** tool, you can hold down the left mouse button and drag to spawn. 
+
+![](drag_spawn_ui.png)
+
+While dragging, a new object will be spawned when the mouse cursor travels a world distance >= **Min drag distance**. This allows you to adjust the distance between objects that get spawned during drag.
+
+It is recommended to keep the **Clamp min drag distance to object volume** field checked in order to avoid any overlaps between the spawn guide and the previously spawned object. **Note: **When this field is checked, the radius of the sphere that encloses the object volume will be used as a minimum drag distance.
+
+The next image shows a few barrels that were spawned using **spawn guide scale & prefab randomization** and **drag spawn**:
+
+![](drag_spawn_barrels.png)
+
+#### Terrain Flattening
+
+**Props Spawn** supports a feature called **Terrain Flattening**. When enabled, it allows you to flatten the terrain area surrounding the spawn guide when you spawn objects either during **left-click** or **drag spawn**.
+
+![](terrain_flatten_ui.png)
+
+Make sure you have the **Flatten** field checked in the **Terrain Flatten** UI section to enable flattening.
+
+Use the **Terrain quad radius** field to establish the flatten radius or hold down **[CTRL]** and use the mouse scroll wheel.
+
+The **Mode** field allows you to specify how the new terrain height is calculated. Possible values are:
+
+- **Lowest** - the height of the terrain will be set to the lowest height value inside the flatten radius;
+- **Average** - the height of the terrain will be set to the average height value inside the flatten radius;
+- **Highest** - the height of the terrain will be set to the highest height value inside the flatten radius;
+
+Checking **Apply falloff** can sometimes help smooth out hard transitions.
+
+---
+
+**Note: **As you might have seen in the image above, terrain flattening comes with some limitations. First, it is extremely slow for heightmap resolutions of **1025 x 1025** and above (this of course also depends on the system on which the Unity Editor is running). One way to get around this is to change the terrain's heightmap resolution to a lower value if it doesn't degrade the quality of the terrain too much. In order to change the heightmap resolution, follow the next steps:
+
+1.  select the terrain object in the hierarchy view;
+2. in the Inspector, click on the **Terrain Settings** button:
+
+![](terrain_settings_btn.png)
+
+3. scroll down to **Texture Resolutions (On Terrain Data)** and change the heightmap resolution:
+
+![](texture_res_on_terr_data.png)
+
+Secondly, it doesn't support tiled terrains. When tiled terrains are used, you will see the flatten radius being clipped to the tile the spawn guide is sitting on.
+
+---
 
 ### Scatter Brush Spawn
 
