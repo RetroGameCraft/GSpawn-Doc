@@ -1,15 +1,13 @@
-.. image:: logo.png
-
 What is GSpawn - Level Designer?
---------------------------------
+================================
 
 GSpawn allows you to build and edit scenes inside the Unity Editor using
 a plethora of tools such as tile rules, curve spawn, modular snapping to
-name just a few. It can be used for creating modular and outdoor
+name just a few. It can be used for creating modular & outdoor
 environments and tile worlds.
 
 Additional Info
----------------
+===============
 
 In addition to the info provided in this document, you may also want to
 take a look at the tutorial videos listed
@@ -29,20 +27,19 @@ hotkeys, please see the **GSpawn - Shortcuts** document in the **GSpawn
 
 --------------
 
-**Note:**\ This document will focus on the most important features and
-it doesn’t contain a complete listing of the settings/UI controls. Most
-of the UI controls contain useful tooltips which can clarify their
-purpose.
+**Note:** This document will focus on the most important features and it
+doesn’t contain a complete listing of the settings/UI controls. Most of
+the UI controls contain useful tooltips which can clarify their purpose.
 
 --------------
 
 Support
--------
+=======
 
 For support, contact **octamodius@yahoo.com**
 
 Assets
-------
+======
 
 The following assets are used in the screenshots and **are not part of
 the GSpawn - Level Designer package**:
@@ -50,6 +47,9 @@ the GSpawn - Level Designer package**:
 -  `Multistory
    Dungeons <https://assetstore.unity.com/packages/3d/environments/dungeons/multistory-dungeons-33955>`__
    by `Mana Station <https://assetstore.unity.com/publishers/12379>`__
+-  `Medieval Environment
+   Pack <https://assetstore.unity.com/packages/3d/environments/historic/medieval-environment-pack-6859>`__
+   by `Manufactura K4 <https://assetstore.unity.com/publishers/585>`__
 -  `Village Interiors
    Kit <https://assetstore.unity.com/packages/3d/environments/fantasy/village-interiors-kit-17033>`__
    by `3DForge <https://assetstore.unity.com/publishers/2970>`__
@@ -58,15 +58,13 @@ the GSpawn - Level Designer package**:
    by `Tsunoa <https://assetstore.unity.com/publishers/18023>`__
 
 Installation
-------------
+============
 
 -  create a new project in Unity;
 
 -  import the GSpawn - Level Designer package;
 
 -  in the top menu, click on **Tools > GSpawn > Initialize**:
-
-   .. image:: init.png
 
 --------------
 
@@ -82,23 +80,19 @@ called **GSpawn** and the scene view will display a grid. At this point
 initialization is complete. **You need to have the GSpawn object
 selected in the hierarchy view in order to interact with the plugin**.
 
-.. image:: gspawn_hierarchy.png
-
 --------------
 
-**Note:**\ You will need to perform this step for each scene in your
+**Note:** You will need to perform this step for each scene in your
 project. So when you are done with one scene, and would like to create a
 new scene, you need to click on **Tools > GSpawn > Initialize** again.
 
 --------------
 
 The Inspector
--------------
+=============
 
 When the GSpawn object is selected, the Inspector will show a few
 toolbars:
-
-.. image:: inspector_toolbars.png
 
 The top toolbar has 3 buttons. Pressing one of these buttons will
 activate a new mode of operation. The different modes of operation,
@@ -118,7 +112,7 @@ Clicking on these buttons will change the Inspector UI to contain the
 settings/controls that are specific to the tool you are using.
 
 Same UI-Different Settings
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------
 
 You will notice while working with the plugin, that some settings appear
 in multiple places. For example, **Modular Snap** and **Mirror
@@ -133,7 +127,7 @@ of those settings. Making changes to the snap settings in one context,
 doesn’t affect the other settings.
 
 Prefab Management
------------------
+=================
 
 In order to use the plugin functionality, you need to specify the
 prefabs you are going to use.
@@ -155,13 +149,11 @@ To open the Prefab Manager window:
 You can then dock these windows anywhere you wish. The next image shows
 these 2 windows docked next to each other:
 
-.. image:: prefab_mgr_windows_docked.png
-
 Creating Prefab Libraries
-~~~~~~~~~~~~~~~~~~~~~~~~~
+-------------------------
 
 Dropping Prefab Folders
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
 The easiest way to create prefab libraries and populate them with
 prefabs is by dropping prefab folders in the Prefab Library Manager
@@ -170,8 +162,6 @@ drop it onto the blank area inside the Prefab Library Manager.
 
 The next image shows the state of these 2 windows after a prefab folder
 has been dropped inside the prefab library window:
-
-.. image:: prefab_mgr_windows_populated.png
 
 The folder **Multistory Dungeons 2** was dropped in the prefab library
 manager and the plugin has created a **hierarchy** of prefab libraries
@@ -189,7 +179,7 @@ clicking. The prefab manager will always show the contents of all
 selected libraries.
 
 Manual Library Creation
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
 You can also create libraries manually by entering a name in the bottom
 most text field and then clicking on the plus icon. In order to populate
@@ -198,7 +188,7 @@ the project view and then drop them inside the **Prefab Manager**
 window.
 
 Library Visibility
-~~~~~~~~~~~~~~~~~~
+------------------
 
 Each library has an **eye** icon to the left of its name. Clicking on
 this icon will allow you to toggle the visibility of the library. When a
@@ -209,7 +199,7 @@ mechanism.
 If a library is hidden, all its child libraries will also be hidden.
 
 Moving/Copying Prefabs Between Libraries
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------------------
 
 You can copy prefabs from one library to another using the following
 steps:
@@ -240,12 +230,10 @@ next steps:
 -  drag and drop them in the destination library;
 
 Prefab Previews
-~~~~~~~~~~~~~~~
+---------------
 
 Prefab previews can be rotated by holding down the **middle mouse
 button** and moving the mouse.
-
-.. image:: prefab_preview_ui.png
 
 At the top of the preview you can see the name of the prefab asset.
 
@@ -257,7 +245,7 @@ The second row at the bottom informs you whether or not the prefab is
 linked to an `object group <##Object%20Groups>`__.
 
 Prefab Library Profiles
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 It is possible to organize your prefab libraries into **prefab library
 profiles**. Profiles are used in many places in the plugin. They are
@@ -269,7 +257,7 @@ be **one active profile** and the prefab library will only show the
 libraries of the active profile.
 
 Creating a Prefab Library Profile
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to create a new library profile:
 
@@ -278,23 +266,17 @@ In order to create a new library profile:
 
 -  then click on **Create new profile…**
 
-   .. image:: create_lib_profile.png
-
 -  a new window will appear:
-
-   .. image:: create_lib_profile_wnd.png
 
 -  enter a name for the profile and click on **Create**.
 
 The new profile will be marked as the new active profile:
 
-.. image:: profile_created.png
-
 You can now populate the profile with libraries and prefabs using the
 methods discussed previously.
 
 Object Spawn Tools
-------------------
+==================
 
 The following spawn tools are available:
 
@@ -309,7 +291,7 @@ The following spawn tools are available:
 9. `Physics Spawn <###Physics%20Spawn>`__
 
 The Spawn Guide
-~~~~~~~~~~~~~~~
+---------------
 
 Some of the spawn tools work by creating a spawn guide object in the
 scene which you can move with the mouse cursor in order to establish the
@@ -339,7 +321,7 @@ will be snapped to mesh or terrain surfaces.
 --------------
 
 Spawn Guide Rotation
-^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~
 
 You can rotate the spawn guide using the following hotkeys:
 
@@ -352,6 +334,9 @@ pivot. If you wish to use the spawn guide bounds center as the pivot,
 you have to also hold down **[SHIFT]** while pressing the **X/Y/Z**
 buttons.
 
+You can press **[I]** to reset the object rotation to the rotation
+stored in the prefab asset
+
 When rotating the spawn guide with these hotkeys, the default rotation
 is **90**. If you wish to change the rotation step, open **Edit >
 Preferences…**
@@ -359,13 +344,11 @@ Preferences…**
 This will open Unity’s Preferences window. In the left pane, click on
 **Input** under the **GSpawn** parent item:
 
-.. image:: prefs_wnd_input.png
-
 You can now change the keyboard rotation step for each axis
 individually.
 
 Picking Prefabs From Scene Objects
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Instead of **double clicking** on prefab previews in the prefab manager
 to change the spawn guide prefab, you can also pick prefabs from the
@@ -376,15 +359,13 @@ Simply hold down **[ALT]** and left click on a scene object.
 
 --------------
 
-**Note:**\ This only works as long as the object you click on **is an
+**Note:** This only works as long as the object you click on **is an
 instance of a prefab that exists in the prefab manager**.
 
 --------------
 
 Modular Snap Spawn
-~~~~~~~~~~~~~~~~~~
-
-.. image:: modular_snap_spawn_btn.png
+------------------
 
 Modular snapping represents the act of snapping objects to the scene
 grid. When this spawn tool is active, the spawn guide will be snapped to
@@ -394,17 +375,16 @@ by placing one object at a time.
 
 --------------
 
-**Note:**\ Although **Modular Snap** is a spawn tool, modular snapping
-is actually used in different places. Other spawn tools such as
-**Modular Walls, Segments and Box** also use modular snapping to snap
-the spawn guide. Also the **Object Selection** mode uses modular
-snapping to snap selected objects which is very handy when making
-changes to the scene.
+**Note:** Although **Modular Snap** is a spawn tool, modular snapping is
+actually used in different places. Other spawn tools such as **Modular
+Walls, Segments and Box** also use modular snapping to snap the spawn
+guide. Also the **Object Selection** mode uses modular snapping to snap
+selected objects which is very handy when making changes to the scene.
 
 --------------
 
 Moving Up/Down
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 It is sometimes useful to be able to move the spawn guide up/down. You
 can use the **[Q]** & **[E]** hotkeys for this purpose. They will move
@@ -417,21 +397,19 @@ mouse scroll wheel to offset the guide.
 Press **[R]** in order to reset the offset back to **0**.
 
 Y Axis Rotation
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 In Modular Snap, you can rotate the spawn guide by holding down
 **[SHIFT]** and using the mouse scroll wheel. This is in addition to the
 **X/Y/Z** hotkeys discussed earlier.
 
 Grid Snap Climb
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 Moving up/down using hotkeys or mouse scroll wheel is flexible, but
 sometimes you may desire a more automatic behavior. This behavior is
 called **grid snap climb** and you can find the associated field in the
 Inspector:
-
-.. image:: grid_snap_climb_ui.png
 
 You can also toggle grid snap climb on/off using **[SHIFT + C]**.
 
@@ -441,7 +419,7 @@ well for objects that are supposed to sit on top of other objects
 (e.g. walls on top of floors, decorative elements on walls etc).
 
 Object-to-Object Snap
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 Modular snapping has 2 modes of operation: grid snap (which we already
 discussed) and object-to-object snap. You can switch between these 2 by
@@ -452,7 +430,7 @@ snap to the grid. Instead, it will snap to nearby objects.
 
 --------------
 
-**Note:**\ Object-to-object snapping doesn’t work well with prefabs that
+**Note:** Object-to-object snapping doesn’t work well with prefabs that
 have bumps or decorative elements on the sides. It is ideal when working
 with walls, floors or any other similar structures that have flat
 side-surfaces. And it is especially suited for working with tile blocks
@@ -461,7 +439,7 @@ side-surfaces. And it is especially suited for working with tile blocks
 --------------
 
 Alignment Highlights & Hints
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When snapping objects, you will usually want to be precise and sometimes
 you may want objects to line up in a certain direction. When using a
@@ -472,8 +450,6 @@ positions line up correctly.
 The plugin assists you by highlighting nearby objects when they line up
 with the spawn guide along one of the grid axes. The next image shows an
 example of this:
-
-.. image:: alignment_highlights.png
 
 In the image above 3 columns have been spawned on top of a floor. The
 spawn guide has been placed in the corner and the highlights were used
@@ -486,8 +462,6 @@ display alignment hints.
 
 In the image below, the hint labels were used to spawn 3 successive
 equally spaced columns:
-
-.. image:: alignment_hints.png
 
 The labels show the name of the object to which they are attached and a
 distance value. This distance value represent the distance from the
@@ -504,14 +478,12 @@ using the following shortcuts:
 -  [**SHIFT + SPACE**] - toggle alignment hints;
 
 Prefs
-'''''
+^^^^^
 
 There a few settings that that you can change from the preferences
 window when it comes to alignment highlights and hints. Open **Edit >
 Preferences…** and in the left pane click on **GSpawn > Object Transform
 Sessions**:
-
-.. image:: alignment_highlights_prefs.png
 
 Under the **Modular Snap** section you have different settings that can
 be modified that affect modular snapping. We will talk about those that
@@ -533,9 +505,7 @@ are related to alignment highlights and hints:
    clutter;
 
 Modular Walls Spawn
-~~~~~~~~~~~~~~~~~~~
-
-.. image:: modular_walls_spawn_btn.png
+-------------------
 
 This spawn tool is very handy for creating walls. You could use
 **Modular Snap Spawn** to place one wall piece at a time. However, a
@@ -544,12 +514,10 @@ multiple wall segments in a few clicks while also handling inner and
 outer corners automatically.
 
 Modular Wall Prefab Profiles
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Before this tool can be used there is a bit of setup involved. If we
 take a look in the Inspector, we can see the following settings:
-
-.. image:: modular_walls_spawn_settings_ui.png
 
 We can see that we need to specify a **Modular wall prefab profile**.
 This is a prefab profile that contains the necessary data which will be
@@ -557,13 +525,11 @@ used by the plugin to spawn wall pieces.
 
 Open **Tools > GSpawn > Windows > Modular Wall Prefabs…**
 
-.. image:: modular_walls_wnd.png
-
 The above window will show up on the screen and this is where you need
 to specify the necessary data.
 
 Wall Pieces
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 In the left pane you can see there are 3 icons that represent different
 types of wall pieces. Let’s talk about what each of these mean:
@@ -581,10 +547,8 @@ The following image shows the 3 prefabs that will be used in this
 example, each prefab being mapped to each of the wall pieces we just
 discussed:
 
-.. image:: wall_pieces_ex.png
-
 Prefab Data
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 At the bottom of the modular wall prefab window, there is a section
 labelled **Prefab Data**.
@@ -595,7 +559,7 @@ points up. This will usually be the Y axis.
 The second field is the most important and is called **Example prefab**.
 
 Example Prefab
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 An example prefab is a prefab that you need to create that contains all
 the necessary wall pieces arranged in a certain configuration that will
@@ -619,8 +583,6 @@ In order to create the example, prefab follow the next steps:
 The next image shows how this arrangement looks like for the prefab
 assets that we are using in this example:
 
-.. image:: wall_example_prefab.png
-
 The labels associated with each wall piece are not random. They have
 special meaning. We’ll get back to this in just a bit.
 
@@ -628,11 +590,7 @@ Select the wall pieces you just created and inside the **Prefab Library
 Manager** window click on the **Create prefab…** button in the top
 toolbar:
 
-.. image:: prefab_lib_mgr_create_prefab.png
-
 This will bring up the following window:
-
-.. image:: create_wall_ex_prefab_wnd.png
 
 You need to give the prefab asset a name and specify a destination
 folder. You can drag and drop the folder in the **Destination folder**
@@ -643,12 +601,8 @@ will be asked if you wish to replace the old prefab.
 
 Now click on the prefab asset you just created. And open the prefab:
 
-.. image:: open_prefab_btn.png
-
 Once the prefab window is open, click on each wall piece and assign it
 the right name as discussed earlier:
-
-.. image:: opened_ex_prefab.png
 
 These names are important to the plugin because it allows it to identify
 the role of each piece. The names can be lower case, upper case or
@@ -658,8 +612,6 @@ shown in the image above.
 Finally, drop the prefab asset inside the **Example prefab** in the
 **Modular Wall Prefab Profile** window:
 
-.. image:: wall_ex_prefab_field.png
-
 If there are any errors with the prefabs (e.g. incorrect naming) the
 plugin will show an error message in the console window.
 
@@ -667,12 +619,10 @@ If you ever need to make changes to the example prefab, you have to
 press the **Refresh** button to instruct the plugin to refresh the data.
 
 Assigning Prefabs
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 The final step is to assign the wall piece prefabs to the correct slot
 in the wall prefab profile window as shown in the image below:
-
-.. image:: wall_prefab_assignment.png
 
 Each wall piece was assigned to the right slot (**Straight Wall, Inner
 Corner & Outer Corner**) by dragging a prefab from the **Prefab
@@ -682,7 +632,7 @@ At this point, the prefab profile is ready to use.
 
 --------------
 
-**Note:**\ If you need more than one profile, you will have to create an
+**Note:** If you need more than one profile, you will have to create an
 additional profile and a new example prefab for each profile. In this
 example, a single profile is needed and the **Default** profile was
 used.
@@ -690,7 +640,7 @@ used.
 --------------
 
 Spawning Walls
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 Make sure the **Modular Walls** spawn mode is active. Select the wall
 prefab profile you would like to use in the **Modular wall prefab
@@ -703,7 +653,7 @@ associated with the current profile.
 To spawn:
 
 -  snap the spawn guide into the right position where you would like to
-   place the wall. **Note:**\ The plugin will always keep the spawn
+   place the wall. **Note:** The plugin will always keep the spawn
    guide’s up axis aligned to the grid. This means you can’t rotate the
    spawn guide around **X** or **Z**. Only the **Y** hotkey will work;
 -  left click to start. This will disable the spawn guide and box
@@ -718,19 +668,15 @@ can also press **[ESCAPE]** to cancel.
 
 The next image shows a wall that surrounds a floor plan:
 
-.. image:: wall_spawn_example.png
-
 As you can see, even though there is a setup phase, once the setup phase
 is finished, spawning walls can be done in a matter of a few clicks with
 support for inner and outer corner detection.
 
 Multiple Prefabs Per Wall Piece Slot
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can assign more than one prefab to the same slot as shown in the
 image below:
-
-.. image:: damaged_wall_pieces.png
 
 In the image above a damaged wall piece was added to the **Straight
 Wall** slot. Two damaged prefabs were added to the **Inner Corner**
@@ -739,11 +685,9 @@ prefabs.
 
 The result can be seen in the next image:
 
-.. image:: wall_spawn_example_damaged.png
-
 --------------
 
-**Note:**\ This only works as long as all the prefabs which are assigned
+**Note:** This only works as long as all the prefabs which are assigned
 to a slot share the same pivot. For example, if you were to place all
 the **Inner Corner** wall pieces at the origin in the same rotation, the
 wall pieces would perfectly overlap.
@@ -751,7 +695,7 @@ wall pieces would perfectly overlap.
 --------------
 
 Requirements
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 In order to use the **Modular Walls** spawn tool, the following
 conditions must be met:
@@ -767,14 +711,12 @@ conditions must be met:
    must all point up along the same axis);
 
 Spawning Walls With No Inner/Outer Corners
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you would like to spawn walls that don’t have **Inner/Outer**
 corners, you can do that by following the next steps:
 
 1. create the example prefab as shown in the image below:
-
-.. image:: simple_wall_example_prefab.png
 
 Note that in this case, because we don’t have access to inner and outer
 corners, 2 straight wall pieces were used to create them. However, in
@@ -788,17 +730,11 @@ example, the name assigned to these objects was ‘-’.
    the **Straight Wall** slot; **Inner & Outer** slots have to be kept
    blank:
 
-.. image:: simple_wall_straight_slot.png
-
 The next image shows an example of spawning walls using this new wall
 profile:
 
-.. image:: simple_wall_spawn_ex.png
-
 Segments Spawn
-~~~~~~~~~~~~~~
-
-.. image:: segments_spawn_btn.png
+--------------
 
 **Segments Spawn** and its cousin `Box Spawn <###Box%20Spawn>`__ are
 very handy when working with tile blocks. They can also be used when
@@ -827,15 +763,11 @@ You can hold down **[SHIFT]** and **right-click** to step back
 The next image shows a simple example of a series of tile blocks spawned
 using this tool:
 
-.. image:: segments_spawn_example.png
-
 Extension Plane
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 When the spawn guide is created, you will see a transparent quad sitting
 below the spawn guide:
-
-.. image:: ext_plane.png
 
 This is the **extension plane** and it is also used in **Box Spawn**
 mode. The extension plane represents the horizontal extension direction.
@@ -857,14 +789,14 @@ aligned with the surface you picked with the mouse cursor.
 
 --------------
 
-**Note:**\ Since the orientation of the plane is linked to the spawn
+**Note:** Since the orientation of the plane is linked to the spawn
 guide’s volume faces, rotating the spawn guide will also change the
 orientation of the extension plane.
 
 --------------
 
 Height Modes
-^^^^^^^^^^^^
+~~~~~~~~~~~~
 
 There are 3 height modes that allow you to change the height of the
 segment chain. Before we discuss these height modes it is important to
@@ -885,8 +817,6 @@ The available height modes are:
 
 The next image shows the height mode controls in the UI:
 
-.. image:: seg_height_mode_const.png
-
 The **Default height** field allows you to specify a default height
 value that will be used when you start a segment chain. The
 **Raise/Lower amount** fields allow you to control how many cells are
@@ -899,15 +829,13 @@ height acts as a base height value.
 The following image shows an example of tiles spawned using each one of
 these height modes:
 
-.. image:: seg_spawn_height_mode_ex.png
-
 You can change the height by holding down **[SHIFT]** and using the
 mouse scroll wheel. When using the **Random** and **Pattern** modes,
 this will essentially allow you to apply a base height value to the
 generated height values.
 
 Prefab Pick Mode
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 By default, when you spawn objects using the **Segments Spawn** tool,
 the objects will be spawned from the same prefab used by the spawn
@@ -928,22 +856,18 @@ mode**. The following options are available:
 The following image shows tiles which were spawned using the **Random**
 and **Height Range** pick modes:
 
-.. image:: seg_pick_modes_ex.png
-
 --------------
 
-**Note:**\ When using **Random** or **Height Range**, you should make
+**Note:** When using **Random** or **Height Range**, you should make
 sure all prefabs have the same size. Otherwise, you might encounter
 incorrect results.
 
 --------------
 
 Settings Profiles
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 The segment settings can be organized in profiles:
-
-.. image:: segments_profiles_ui.png
 
 A **Default** profile is always available, but you could create more.
 This can be useful in situations where you need to switch between
@@ -955,15 +879,13 @@ change.
 
 --------------
 
-**Note:**\ When changing settings, you actually make changes to the
+**Note:** When changing settings, you actually make changes to the
 currently active profile.
 
 --------------
 
 Box Spawn
-~~~~~~~~~
-
-.. image:: box_spawn_btn.png
+---------
 
 **Box Spawn** is another spawn tool which is useful when working tile
 blocks or when laying down floors.
@@ -987,11 +909,9 @@ as **Segments Spawn**. Also, the same `prefab picking
 strategies <####Prefab%20Pick%20Mode>`__ can be used.
 
 Fill Modes
-^^^^^^^^^^
+~~~~~~~~~~
 
 In **Box Spawn** there are 3 fill modes available:
-
-.. image:: box_spawn_fill_mode.png
 
 The default fill mode is **Solid**. This simply means that the box area
 will be filled with objects.
@@ -1000,16 +920,10 @@ The second fill mode is **Border**. When this fill mode is active, you
 can also change the box border. The next image shows a few examples of
 spawning tiles with different border size width values:
 
-.. image:: box_spawn_border_width_ex.png
-
 The next image shows the inside of the right most structure:
-
-.. image:: box_border_inside.png
 
 The third fill mode is **Hollow**. This essentially creates a hollow box
 volume. The next image shows the interior of such a structure:
-
-.. image:: hollow_box_example.png
 
 When working with tile blocks, this fill mode can actually be used as an
 optimization strategy. From the outside, the structures will look the
@@ -1020,9 +934,7 @@ This depends of course on the game’s needs. Sometimes it may be useful
 to use the **Solid** fill mode instead.
 
 Tile Rule Spawn
-~~~~~~~~~~~~~~~
-
-.. image:: tile_rules_spawn_btn.png
+---------------
 
 The **Tile Rule Spawn** tool allows you to paint tiles inside an
 infinite grid. When tiles are painted, adjacent tiles are automatically
@@ -1048,7 +960,7 @@ must have walls sitting on top, it is best to use a combination of
 **Modular Snap Spawn** and **Modular Walls Spawn**.
 
 Creating Tile Rule Prefabs
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Assuming you have an asset package that contains modular prefabs and you
 would like to create a bunch of tiles that can be used with the tile
@@ -1070,8 +982,6 @@ steps:
    object name**;
 7. make sure the objects are selected click on **Create**;
 
-.. image:: tr_prefab_create_wnd.png
-
 In the image above, the **Pivot object name** field was set to
 **Base_01**. The pivot object represents the main object in the tile. It
 is the object that will sit on top of the grid surface, usually a floor
@@ -1084,12 +994,8 @@ field.
 
 The next image shows an example of a tile prefab that was created:
 
-.. image:: tr_bridge_prefab.png
-
 The next image shows the tiles that were created for the purposes of
 this discussion:
-
-.. image:: tile_rule_prefabs_lineup.png
 
 The labels below each tile are simply conventions and try to describe
 the tile rule associated with each tile. For example, the **Bridge**
@@ -1100,14 +1006,12 @@ After all tiles have been created, make sure to add them to a prefab
 library so that they can be picked from the **Prefab Manager**.
 
 Creating Tile Rules
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
 A tile rule specifies how a tile connects to adjacent tiles. After the
 tile prefabs have been created and assigned to a prefab library, you
 have to create a **tile rule profile**. Open **Tools > GSpawn > Windows
 > Tile Rules…**
-
-.. image:: empty_tile_rule_wnd.png
 
 Use the topmost drop-down control to create a new profile. You can also
 use the **Default** profile if you wish.
@@ -1117,8 +1021,6 @@ be associated with one or more prefabs.
 
 In order to create a new tile rule, click on the left-most **plus icon**
 in the top toolbar. This will add a new tile rule in the left pane:
-
-.. image:: creating_a_tile_rule_ui.png
 
 The small button grid allows you to define the rule. The middle button
 represents a tile that is painted inside the grid. The adjacent buttons
@@ -1134,13 +1036,9 @@ In order to assign prefabs to a tile rule, you have to select prefabs in
 the prefab manager and drag and drop them inside the tile rule drop
 area:
 
-.. image:: assign_prefabs_to_tile_rule_ex.png
-
 Next you have to **left/right-click** on the tile buttons to define the
 rule. The next image shows the tile rules that were created for each of
 the 5 tiles we created earlier:
-
-.. image:: tile_rule_prefab_mapping.png
 
 An important detail to remember here is that the coordinate system of
 the tile buttons in tile rule UI maps to the world axes as explained
@@ -1150,8 +1048,6 @@ below:
    axis**;
 -  the **vertical axis** of the button grid maps to the **world Z
    axis**;
-
-.. image:: tile_rule_ui_coord_system_map.png
 
 So when clicking on the buttons to turn them green (or red) you first
 have to look at the tile objects and see where they open up and where
@@ -1181,8 +1077,6 @@ you wanted to have a variation of the **Cross** tile that only spawns
 when **it is not** surrounded by neighbors on the diagonal, you could
 define the rule like this:
 
-.. image:: cross_variant_red.png
-
 This variant will spawn **only** if the tile is surrounded by tiles
 along the X and Z axes **AND** it doesn’t have any neighbor tiles along
 the diagonals.
@@ -1198,14 +1092,14 @@ rules or when making changes to existing rules. This makes it easy to
 spot mistakes early and make the necessary changes.
 
 Creating a Tile Rule Grid
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once the tile rule profile is setup, you have to create a tile rule grid
 which will be used as a paint canvas.
 
 --------------
 
-**Note:**\ The tile rule grid should not be confused with the **scene
+**Note:** The tile rule grid should not be confused with the **scene
 grid**. They are different. When using the **Tile Rule Spawn** tool, you
 will be painting on the tile rule grid. When using **Modular Snap
 Spawn** or other tools that use modular snapping, you will be snapping
@@ -1215,8 +1109,6 @@ to the scene grid.
 
 Make sure the **Tile Rule Spawn** tool is active. Find the **Tile Rule
 Grid Creation** section and fill in the settings:
-
-.. image:: tr_grid_create_settings_ui.png
 
 The mandatory fields are the following:
 
@@ -1231,8 +1123,6 @@ The mandatory fields are the following:
    prefab. You can hover a prefab preview in the **Tile Rule Profile**
    window in order to find its size:
 
-.. image:: tr_prefab_model_size_tooltip.png
-
 Just make sure to pick a prefab without decorations on the side. If you
 don’t have one, then pick any prefab, and truncate the values. For
 example, if the values show **<4.023, 3.1200, 4.08>** then you can use
@@ -1246,8 +1136,6 @@ children of this object.
 Also, if you take a look in the Inspector, you will see that a tile rule
 grid item was added to the grid list:
 
-.. image:: tile_rule_grid_ui_list.png
-
 You can have multiple grids in the same scene. The plugin uses the
 concept of **current grid** to establish the grid that is used as a
 paint canvas. You can click on a grid in the grid list to mark it as the
@@ -1256,11 +1144,7 @@ current grid. The current grid is shown in green.
 The next image shows the meaning of the controls which are associated
 with the tile rule grid item:
 
-.. image:: tile_rule_grid_item_actions_settings.png
-
 If you click on the left most arrow you can expand the UI:
-
-.. image:: tile_rule_grid_item_expanded.png
 
 From here you can change the grid origin and its rotation. This will
 actually change the position and rotation of the grid object in the
@@ -1270,9 +1154,7 @@ The last few controls allow you to enable/disable mirroring, toggle
 mirror planes and move the mirror gizmo to a specified grid cell.
 
 Tools & Brushes
-^^^^^^^^^^^^^^^
-
-.. image:: tile_rule_spawn_toolbars.png
+~~~~~~~~~~~~~~~
 
 If you look in the Inspector, you will see these 2 toolbars when the
 **Tile Rule Spawn** tool is active.
@@ -1313,30 +1195,24 @@ brushes available:
 
 --------------
 
-**Note:**\ When the **Ramp Paint** tool is active, only the **Box
-Brush** can be used and it will always have a horizontal size and height
-of **1**.
+**Note:** When the **Ramp Paint** tool is active, only the **Box Brush**
+can be used and it will always have a horizontal size and height of
+**1**.
 
 --------------
 
 The next image shows a simple dungeon environment which was painted
 using a combination of **Box** and **Flexi Box** brushes:
 
-.. image:: simple_tile_rule_example_dungeon.png
-
 The next image shows a simple example of using the segments brush:
-
-.. image:: segments_brush_example_simple.png
 
 This is useful for quickly creating pathways.
 
 Platform Rules
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 Let’s take a look at the first environment that was shown earlier, but
 this time from another angle:
-
-.. image:: railings_instead_of_platforms.png
 
 Notice that where the tiles stack on top of each other, the railings
 look a bit off. Although not entirely incorrect (it may be what you are
@@ -1345,8 +1221,6 @@ only the floors (base) objects without decorations.
 
 In order to do this, we can create a new tile rule and set its rule type
 to **Platform**:
-
-.. image:: platform_rule_0.png
 
 Note that we are using the same prefab as we are using for the **Cross**
 rule. This is just a simple floor object with no decorations.
@@ -1360,8 +1234,6 @@ this rule will be picked.
 
 Let’s take another look at our tiles:
 
-.. image:: platform_tiles_ex_0.png
-
 The railings have disappeared because the plugin can now use the
 platform rule instead. However, we are still not quite done yet. If we
 look at the bottom most platform tile (the one closest to the viewer),
@@ -1369,36 +1241,24 @@ we can see that it sits below a rounded corner, but the platform tile
 has cubic shape. In order to fix this we will have to add a second
 platform rule that defines a turn:
 
-.. image:: turn_rule_ui.png
-
 Let’s have another look at our tiles:
-
-.. image:: updated_tiles_with_2_platform_rules.png
 
 Our problem has been fixed, but now we have another one. Because we have
 added a new rule that uses 2 green tiles, some of the old platforms have
 been updated to correctly match this new rule. These tiles are actually
 **TJunction** rules. So let’s go ahead and add one final platform rule:
 
-.. image:: platform_rule_tjunction.png
-
 The result now looks like this which is exactly what we are after:
 
-.. image:: final_tr_with_platforms.png
-
 Ramp Rules
-^^^^^^^^^^
+~~~~~~~~~~
 
 Another type of tile rule is the **Ramp** rule. You need to define at
 least one ramp rule in order to use the **Ramp Paint** tool.
 
 The following ramp prefab was created for this example:
 
-.. image:: tr_ramp.png
-
 A ramp rule was created as shown below:
-
-.. image:: ramp_rule_ui.png
 
 The ramp opens up along the negative X axis, so the left neighbor was
 made green.
@@ -1407,24 +1267,18 @@ At this point, you can activate the **Ramp Paint** tool and paint ramps.
 
 The next image shows a new environment that uses ramp tiles:
 
-.. image:: tiles_with_ramp_rules_ex.png
-
 When placing ramps it is possible to run into situations where the ramp
 is surrounded by more than one tile and the ramp rotation may be
 incorrect. For example, consider the following scenario:
-
-.. image:: ramp_direction.png
 
 The ramp points to the left tile, but we want it to point towards the
 forward tile. You could probably define multiple ramp rules, but that
 can be tedious. Instead, you can place the ramp brush over the ramp and
 press **[Y]** to rotate it:
 
-.. image:: ramp_direction_correct.png
-
 --------------
 
-**Note:**\ When the tile grid gets refreshed, the ramp rotations will be
+**Note:** When the tile grid gets refreshed, the ramp rotations will be
 restored properly as long as all ramp prefabs open up along the same
 axis in their model pose. For example, if the ramp rule contains
 multiple ramp prefabs, when the grid is refreshed, a ramp will be picked
@@ -1437,14 +1291,12 @@ same axis when creating the ramp prefabs.
 --------------
 
 The Connect Tool
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 The **Connect** tool can be very handy for creating suspended pathways.
 
 In order to use, make sure you click on the **Connect** button in the
 Inspector to activate it:
-
-.. image:: connect_btn.png
 
 Or press **[R]**.
 
@@ -1457,8 +1309,6 @@ Next, follow these steps:
 4. **left-click** to spawn;
 5. repeat until you hold down **[SHIFT]** and **left-click** to end the
    segment chain ore press **[ESCAPE]**;
-
-.. image:: connect_example.png
 
 You can hold down **[CTRL + ALT]** and use the scroll wheel to change
 the Y offset for the start and end points. You can do this before
@@ -1477,8 +1327,6 @@ right. Pressing **[SPACE]** would reverse these travel directions.
 The next image shows an example where the start point sits on the grid
 and the end point has been raised above the grid:
 
-.. image:: connect_with_ramps_ex_0.png
-
 Note that the ramps were added automatically in order to make the upper
 area accessible. Ramps will only be generated if a ramp rule is defined
 and if the **Generate ramps** toggle is checked inside the Inspector
@@ -1489,15 +1337,11 @@ were inserted in order to make the ramp accessible.
 
 The next image shows an example of a more complex path network:
 
-.. image:: connect_tool_complex_path.png
-
 When using this tool, you need to sometimes be careful not to
 accidentally block existing pathways as shown below:
 
-.. image:: connect_blocked_path.png
-
 Tile Rule Priority
-^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~
 
 When painting tiles, the tile rules are evaluated **in the order in
 which they appear in the tile rule window for each rule type**. If you
@@ -1512,13 +1356,11 @@ There are 2 ways to handle this:
    will be for the plugin to understand your intentions;
 -  use the **move up/move down/move to top/ move to bottom** buttons:
 
-.. image:: rule_move_buttons.png
-
 Pressing these buttons will move the rule up/down in the UI while also
 changing their priority.
 
 Tile Rule Grid Refresh
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 When making changes to a tile rule profile (changing cell states, adding
 prefabs etc), all the grids which use that profile will automatically be
@@ -1528,14 +1370,12 @@ As the number of tiles inside a grid grows, grid refreshing can become
 slow. In this case, you might want to turn off automatic updates, make
 the necessary changes to the tile rules, and update the grid manually:
 
-.. image:: auto_tr_grid_refresh_toggle.png
-
 In the image above, the toggle at the bottom right has been unchecked.
 This means automatic refresh is turned off. The grid(s) can be manually
 refreshed by pressing the **Refresh grids** buttons.
 
 Tile Rule Radius
-^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~
 
 By default, the tile rules use a radius of **1**. This means that only
 the immediate neighbors are taken into account. In some situations you
@@ -1546,12 +1386,8 @@ In order to set the tile rule radius you need to follow the next steps:
 
 1. set the radius to the desired value in the tile rule window UI:
 
-.. image:: change_tile_rule_radius.png
-
 When you do that you’ll notice that the cell button grid will change
 appearance because there are now more neighbors that can be worked with:
-
-.. image:: more_tr_cells_radius_2.png
 
 This step will only enable you to use a radius of 2 inside the UI, but
 it doesn’t actually do anything besides that.
@@ -1559,18 +1395,14 @@ it doesn’t actually do anything besides that.
 2. in the Inspector UI, you have to change the radius associated with
    the tile rule grid:
 
-.. image:: enable_2_radius_tile_grid.png
-
 At this point, the new radius is taken into account when
 painting/erasing tiles.
 
 Prefab Settings
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 When you click on prefabs in the tile rule profile window, the right
 pane will display a few settings:
-
-.. image:: tr_prefab_settings.png
 
 The **spawn chance** is useful when you have more than one prefab per
 rule. For example, you might have damaged versions of the same prefab
@@ -1589,8 +1421,6 @@ the more majestic version (with rails) for all Y coordinates starting at
 
 The next image shows the updated ramp rule:
 
-.. image:: updated_ramp_rule_cond.png
-
 Note that there are now 2 ramp prefabs: one simple and one with railings
 on the sides. The one with railings on the sides has the **Cell Y
 condition** checked and the Y interval has been set to **[2, 100]**. A
@@ -1602,8 +1432,6 @@ The simple ramp uses an interval of **[0, 1]**.
 The next image shows a simple environment that was created using these
 updated ramp rules:
 
-.. image:: tile_rule_env_cond_ramps.png
-
 When any one of the **Cell X/Y/Z condition** toggles are checked, the
 prefab is said to be **conditioned**. When painting tiles, the plugin
 will first process the conditioned prefabs first and check if any one of
@@ -1613,7 +1441,7 @@ If all prefabs are conditioned, but no prefab satisfies the conditions,
 the **spawn chance** will be used to randomly pick a prefab.
 
 Fixing Overlaps
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 The tiles that we have been using have these pillars attached to them
 and the pillars sit right where the tiles connect with adjacent tiles
@@ -1621,16 +1449,12 @@ which also have pillars. This causes a problem to appear where the
 pillars from 2 or more connecting tiles overlap with each other. The
 next image shows an example of this:
 
-.. image:: multiple_pillars_same_position.png
-
 This can cause rendering artifacts. Although we can’t see the artifacts
 in the image, when moving the camera, there is flickering effect because
 the 2 pillars are fighting with each other over which one gets rendered.
 
 In order to solve this, you have to go to the tile rule grid list in the
 Inspector and click on the **Fix overlaps** button as shown below:
-
-.. image:: fix_overlaps_btn.png
 
 This will hide the renderers of the overlapping pillars so that a single
 pillar gets rendered.
@@ -1640,36 +1464,238 @@ same issue can appear again because new tiles are created so it is best
 to perform this step at the end, when your game level is finished.
 
 Props Spawn
-~~~~~~~~~~~
+-----------
+
+The **Props Spawn** tool is great for populating your scenes with props.
+For example, you could use it to populate your terrains with trees,
+houses, fences, barrels and the like. You can also spawn directly on
+other mesh surfaces. If you are creating a modular environment, you
+could use this tool to spawn props on the floor or on the walls.
+
+In order to use, **double-click** on a prefab in the **Prefab Manager**
+window. This will activate the spawn guide and you can move it around in
+the scene. Instead of snapping to the grid (as is the case with the
+previous tools that were discussed), it will snap directly to mesh or
+terrain surfaces.
+
+The following hotkeys are available when working with **Props Spawn**:
+
+-  **[SHIFT + mouse move]** - rotate the spawn guide around the surface
+   normal if axis alignment is turned on; rotate around the grid Y axis
+   if axis alignment is turned off;
+-  **[CTRL + mouse move]** - scale the spawn guide;
+-  **[ALT + mouse move]** - offset the spawn guide from the surface
+   (useful for embedding on steep surfaces);
+-  **[R]** - reset the offset applied by moving the mouse back to **0**;
+
+The **[X/Y/Z] & [SHIFT + X/Y/Z]** hotkeys are also available for
+rotating the spawn guide using the keyboard. You can press **[I]** to
+reset the object rotation to the rotation stored in the prefab asset and
+**[O]** will reset the scale to the prefab scale.
+
+Axis Alignment
+~~~~~~~~~~~~~~
+
+Axis alignment refers to the idea of aligning one of the spawn guide’s
+axes to the surface on which it resides. By default, it is turned off,
+but you can turn it on/off by either pressing **[SHIFT + A]** or by
+checking/unchecking the **Align axis** toggle in the Inspector:
+
+If **Align axis** is checked, you also need to specify an alignment axis
+using the **Alignment axis** field. The alignment axis is considered to
+be the positive axis. If you wish to use the corresponding negative
+axis, check **Invert axis**.
+
+Typically, you will want to leave this off. For example, if you want to
+populate terrains with trees, axis alignment should be turned off. Trees
+grow upwards and they don’t look right when aligned with the terrain
+surface. Houses also usually stand straight up.
+
+Axis alignment could be useful if for example you were placing objects
+on an incline or a ramp or some kind of decorative elements such as
+elongated crystals on top of rock surfaces.
+
+Surface Offset & Embed in Surface
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Although you can change the offset from the surface using the mouse, you
+can also use an implicit offset by changing the value of the **Implicit
+offset** field. This can be useful when placing objects on steep
+surfaces with axis alignment turned off in order to avoid floating.
+
+The field **Embed in surface** can sometimes help, but for objects that
+are more irregular at the base where they meet with the surface, it
+won’t always avoid floating. In this case a combination of implicit
+offset and mouse applied offset should do the trick.
+
+The next image shows an example of a barrel placed on a steep terrain
+surface with and without **Embed in surface**:
+
+Surface Types & Surface Layers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, every object in the scene can be used as a surface on which
+the spawn guide can sit. However, there may be times where you would
+like to ignore certain objects. For example, if you are placing props in
+a dense forest, you will most likely want to ignore the trees and snap
+to the terrain only.
+
+The **Surface types** field allows you to select the types of surface
+the spawn guide can sit on:
+
+Another thing that you can do is to ignore certain surfaces based on the
+layer to which they are assigned. In this case, the **Surface layers**
+field can be used.
+
+Spawn Guide Randomization
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A useful feature when working with **Props Spawn** is **Spawn Guide
+Randomization**. This feature allows you to randomize the spawn guide’s
+rotation, scale and prefab. The randomization parameters are applied
+after you spawn a new game object:
+
+1. **left-click** to spawn;
+2. object gets spawn with current rotation/scale/prefab;
+3. spawn guide is randomized;
+
+Randomization also works with `drag spawn <####Drag%20Spawn>`__.
+
+--------------
+
+**Note:** This feature is also available when using **Modular Snap
+Spawn** although it is not as useful. Usually, the objects that you
+spawn with **Modular Snap Spawn** should keep their original size and
+rotation. For example, you definitely wouldn’t want to randomize the
+scale of a wall piece or a floor. These were designed in a specific
+manner by the artist to allow for the easy construction of modular
+environments.
+
+--------------
+
+Rotation Randomization
+^^^^^^^^^^^^^^^^^^^^^^
+
+In order to randomize the rotation, check the **Randomize rotation**
+toggle and then pick the randomization axis. The default is **Surface
+normal** which is what you will usually want for props placement.
+
+The **Randomization mode** field can be set to **Step** or **MinMax**.
+**Step** will apply a random multiple of the specified rotation step,
+whereas **MinMax** will generate a random rotation value in a specified
+interval.
+
+Scale randomization
+^^^^^^^^^^^^^^^^^^^
+
+Check the **Randomize scale** toggle. This will cause 2 new fields to
+show up which will allow you to define a minimum and maximum scale
+value. Very useful for adding more variation to certain types of
+objects.
+
+Prefab Randomization
+^^^^^^^^^^^^^^^^^^^^
+
+Prefab randomization refers to the fact that **after** you spawn a new
+object, the spawn guide will pick a new prefab for the next spawn.
+Simply check the **Randomize prefab** toggle and then select the `random
+prefab profile <##Random%20Prefab%20Profiles>`__ that contains all the
+prefabs that you wish to use.
+
+Drag Spawn
+~~~~~~~~~~
+
+When working with the **Props Spawn** tool, you can hold down the left
+mouse button and drag to spawn.
+
+While dragging, a new object will be spawned when the mouse cursor
+travels a world distance >= **Min drag distance**. This allows you to
+adjust the distance between objects that get spawned during drag.
+
+It is recommended to keep the **Clamp min drag distance to object
+volume** field checked in order to avoid any overlaps between the spawn
+guide and the previously spawned object. **Note:** When this field is
+checked, the radius of the sphere that encloses the object volume will
+be used as a minimum drag distance.
+
+The next image shows a few barrels that were spawned using **spawn guide
+scale & prefab randomization** and **drag spawn**:
+
+Terrain Flattening
+~~~~~~~~~~~~~~~~~~
+
+**Props Spawn** supports a feature called **Terrain Flattening**. When
+enabled, it allows you to flatten the terrain area surrounding the spawn
+guide when you spawn objects either during **left-click** or **drag
+spawn**.
+
+Make sure you have the **Flatten** field checked in the **Terrain
+Flatten** UI section to enable flattening.
+
+Use the **Terrain quad radius** field to establish the flatten radius or
+hold down **[CTRL]** and use the mouse scroll wheel.
+
+The **Mode** field allows you to specify how the new terrain height is
+calculated. Possible values are:
+
+-  **Lowest** - the height of the terrain will be set to the lowest
+   height value inside the flatten radius;
+-  **Average** - the height of the terrain will be set to the average
+   height value inside the flatten radius;
+-  **Highest** - the height of the terrain will be set to the highest
+   height value inside the flatten radius;
+
+Checking **Apply falloff** can sometimes help smooth out hard
+transitions.
+
+--------------
+
+**Note:** As you might have seen in the image above, terrain flattening
+comes with some limitations. First, it is extremely slow for heightmap
+resolutions of **1025 x 1025** and above (this of course also depends on
+the system on which the Unity Editor is running). One way to get around
+this is to change the terrain’s heightmap resolution to a lower value if
+it doesn’t degrade the quality of the terrain too much. In order to
+change the heightmap resolution, follow the next steps:
+
+1. select the terrain object in the hierarchy view;
+2. in the Inspector, click on the **Terrain Settings** button:
+
+3. scroll down to **Texture Resolutions (On Terrain Data)** and change
+   the heightmap resolution:
+
+Secondly, it doesn’t support tiled terrains. When tiled terrains are
+used, you will see the flatten radius being clipped to the tile the
+spawn guide is sitting on.
+
+--------------
 
 Scatter Brush Spawn
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
 Curve Spawn
-~~~~~~~~~~~
+-----------
 
 Physics Spawn
-~~~~~~~~~~~~~
+-------------
 
 Integer Patterns
-----------------
+================
 
 Integer Range Prefab Profiles
------------------------------
+=============================
 
 Random Prefab Profiles
-----------------------
+======================
 
 The Scene Grid
---------------
+==============
 
 The scene grid is used for snapping objects. If you plan on building
 modular environments, it is important to establish a proper grid cell
 size.
 
 Open **Tools > GSpawn > Grid Settings…**
-
-.. image:: grid_settings_wnd.png
 
 The default cell size is set to **1** for all axes. This is value works
 well with prefabs whose size along X and Z are whole numbers such as
@@ -1678,7 +1704,7 @@ have a fractional part such as **2.5** or **3.5**, you should set the
 grid cell size to a lower value such as **0.5** or **0.25**.
 
 Picking a Grid Cell Size
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 Start with a grid cell size of **1** along all axes. Try to test it out
 by snapping a bunch of wall/floor pieces together. If the pieces don’t
@@ -1700,17 +1726,15 @@ steps:
       to **0.25**.
 
 Changing the Cell Size
-~~~~~~~~~~~~~~~~~~~~~~
+----------------------
 
 You can also change the cell size by holding down **[CTRL + SHIFT +
 ALT]** and use the mouse scroll wheel. The **X & Z** cell size will
 change in increments of **0.25** units. A label will appear in the
 middle of the screen showing you the current grid cell size:
 
-.. image:: grid_cell_size_label.png
-
 The Y/Vertical Cell Size
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 The cell size along the Y axis is not something you can see in the scene
 view. But it is used during modular snapping when moving the spawn guide
@@ -1721,7 +1745,7 @@ position will also snap along the Y axis.
 Generally, you can leave this to **1**.
 
 Moving the Grid Up/Down
-~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------
 
 You can change the position of the grid along its local Y axis, using
 the **Local Y offset** field inside the grid settings window. You can
@@ -1742,13 +1766,13 @@ This functionality can be useful when working with multistory
 environments.
 
 Object Selection
-----------------
+================
 
 Object Erase
-------------
+============
 
 Object Groups
--------------
+=============
 
 Object Layers
--------------
+=============
