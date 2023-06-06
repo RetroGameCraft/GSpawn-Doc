@@ -29,6 +29,7 @@ The following assets are used in the screenshots and **are not part of the GSpaw
 
 - [Multistory Dungeons](https://assetstore.unity.com/packages/3d/environments/dungeons/multistory-dungeons-33955) by [Mana Station](https://assetstore.unity.com/publishers/12379)
 - [Medieval Environment Pack](https://assetstore.unity.com/packages/3d/environments/historic/medieval-environment-pack-6859) by [Manufactura K4](https://assetstore.unity.com/publishers/585)
+- [Fantastic Village Pack](https://assetstore.unity.com/packages/3d/environments/fantasy/fantastic-village-pack-152970) by [Tidal Flask Studios](https://assetstore.unity.com/publishers/43636)
 - [Village Interiors Kit](https://assetstore.unity.com/packages/3d/environments/fantasy/village-interiors-kit-17033) by [3DForge](https://assetstore.unity.com/publishers/2970)
 - [Voxel Blocks Pack](https://assetstore.unity.com/packages/3d/environments/fantasy/voxel-blocks-pack-52227) by [Tsunoa](https://assetstore.unity.com/publishers/18023)
 
@@ -919,13 +920,12 @@ Next, follow these steps:
 2. **left-click** to start. This will create 2 perpendicular tile segments;
 3. move the mouse to establish and end-point;
 4. **left-click** to spawn;
-5. repeat until you hold down **[SHIFT]** and **left-click** to end the segment chain ore press **[ESCAPE]**;
 
 ![](connect_example.png)
 
 You can hold down **[CTRL + ALT]** and use the scroll wheel to change the Y offset for the start and end points. You can do this before **left-clicking** to set the start point offset and post **left-click** to change the end point offset. 
 
-The Y offset is updated automatically when you hover a tile with the mouse cursor. In that case the star/end point will snap to the same cell in which the hovered tile resides.
+The Y offset is updated automatically when you hover a tile with the mouse cursor. In that case the start/end point will snap to the same cell in which the hovered tile resides.
 
 Press **[SPACE]** to change the major axis. The major axis is the axis along which the first segment is travelling. In the image above, the first segment travels forward and the second  segment travels to the right. Pressing **[SPACE]** would reverse these travel directions. 
 
@@ -1162,9 +1162,258 @@ Secondly, it doesn't support tiled terrains. When tiled terrains are used, you w
 
 ### Scatter Brush Spawn
 
+![](scatter_brush_btn.png)
+
+The **Scatter  Brush Spawn** tool allows you to paint objects using a circular brush. This can be very handy for painting forests for example. You can use it to paint objects on terrains, but you can also paint on top of planar meshes (e.g. floors, walls);
+
+In order to paint objects, you first need to create a **Scatter Brush Prefab Profile** which holds all the prefabs that will be used for painting.
+
+Then, you need to select the profile you created inside the Inspector (the **Default** profile will be used in this discussion):
+
+![](scatter_brush_profile_field.png)
+
+Finally, hold down the left mouse button and drag to paint objects.
+
+You can use **[CTRL + scroll wheel]** to change the brush radius, or simply set it inside the Inspector using the **Brush radius** field.
+
+#### Creating a Scatter Brush Prefab Profile
+
+Open **Tools > GSpawn > Windows > Scatter Brush Prefabs...**
+
+The following window will appear on the screen:
+
+![](scatter_brush_prefabs_wnd.png)
+
+You can use the **Default** profile or click on the drop-down and create a new profile. The **Default** profile will be used in this discussion.
+
+Next, you need to drag prefabs from the **Prefab Manager** window and drop them into the left pane inside the **Scatter Brush Prefabs** window. The following image shows the same window after it has been populated with prefabs:
+
+![](populated_scatter_brush_prefab_wnd.png)
+
+The **Used** property can be useful for temporarily disabling prefabs. A disabled prefab will not be spawned while painting. The **Spawn chance** defines how frequently a prefab will be picked. Valid values are in the **[0, 1]** interval.
+
+#### Volume Radius
+
+The volume radius represents an approximation of the **original** (i.e. no scale applied) prefab size. By default, when a prefab is added to the scatter brush profile, its volume radius will be set to the **flat volume radius**. This radius represents the radius of a cylinder that surrounds the prefab around the Y axis.
+
+The **Volume radius** field can be used to set a custom radius. There are also 2 buttons which can be used to change the volume radius:
+
+- **Use prefab radius** - sets the volume radius to the radius of a sphere which encloses the prefab. This is rarely useful (unless you are working with sphere prefabs) as it can lead to really large values especially for tall objects such as trees;
+- **Use flat prefab radius** - sets the volume radius to the radius of a cylinder the surrounds the prefab around the Y axis;
+
+The next image shows a few trees painted using the default volume radius (i.e. flat prefab radius):
+
+![](scatter_brush_trees.png)
+
+As you can see, the trees are quite far apart. This is because of the volume radius. If we decrease the volume radius, we can get more density. The following image shows some trees which were painted with a volume radius of **2**:
+
+![](scatter_brush_trees_more_density.png)
+
+---
+
+**Note: **When the scatter brush prefab profile uses too many prefabs and the prefabs use fairly large volumes, you will need to increase the brush radius. Otherwise, most prefabs won't have a chance to be picked. This happens for 2 reasons:
+
+1. too many prefabs means less chance to be picked;
+2. a large volume radius occupies more space so even if these prefabs will eventually be picked, there will be no more room left for them.
+
+---
+
+The volume radius can also be used as a simple repel mechanism. The following image shows an example of this:
+
+![](volume_radius_repel.png)
+
+The rock in the middle of the trees uses a volume radius of **8.23**. Note how there is quite a bit of space between the rock object and the surrounding trees. 
+
+The next image shows a similar situation, but this time the radius of the rock prefab has been set to **2**:
+
+![](scatter_brush_rock_smaller_radius.png)
+
+This time the trees are much closer to the rock.
+
+#### Embed in Surface & Offset from Surface
+
+The **Embed in surface** field will attempt to project the objects onto the surface on which they reside in order to avoid floating. This usually works best with objects that have a somewhat flat area where they connect to the surface. For more irregular objects, such as rocks for example, you might want to also set a small negative value in the **Offset from surface** field to push them down a bit.
+
+#### Slopes
+
+Each prefab has a field called **Enable slope check**. When checked, it will allow you to enter 2 values which represent a minimum and a maximum slope:
+
+![](enable_slope_check.png)
+
+This allows you to prevent objects from being spawned on steep inclines. For example, the minimum and maximum slope values of **0** and **45** respectively mean that the prefab will only be spawned on surfaces whose angle with the horizontal XZ plane is <= 45 degrees.
+
+If we were to use a minimum slope value of **60** and a maximum slope of **90**, the objects will only spawn on very steep surfaces. Flat surfaces will be ignored in this case.
+
+In general, if you want a prefab to spawn on relatively flat surfaces a pair of values such as **[0, 15]** will do.
+
 ### Curve Spawn
 
+![](curve_spawn_btn.png)
+
+The **Curve Spawn** tool is very handy for spawning fences, forests, house rows and the like.
+
+Before you can use this tool you need to create one or more **Curve Prefab Profiles**. 
+
+#### Curve Prefab Profiles
+
+A curve prefab profile holds a collection of prefabs that can be spawned along a curve. For example, if you wanted to create fences, you can create a profile that holds different fence prefabs. These can be regular or damaged fence parts for example.
+
+In order to create a profile open **Tools > GSpawn > Windows > Curve Prefabs...**
+
+The following window will appear on the screen:
+
+![](curve_prefabs_wnd.png)
+
+Click on the drop-down control, select **Create new profile...** to create a new profile. The next image shows the same window after a new profile has been created to hold fence prefabs:
+
+![](fence_curve_profile.png)
+
+2 fence prefabs have been added that can be used to spawn fences. In order to add prefabs, you need to drag them from the **Prefab Manager** window and drop them inside the left pane in the **Curve Prefab Profile** window.
+
+#### Curve Creation Settings
+
+In the Inspector you can see a bunch of settings under the **Curve Creation** UI section:
+
+![](curve_creation_settings.png)
+
+Each curve that you create has its own settings associated with it, but the settings you see above are the initial settings that are used for newly created curves. Once a curve is created, you can change its settings.
+
+The most important field is the **Curve prefab profile** field which allows you to pick the prefab profile you would like to use with the new curve you are about to create. You can also change the profile after the curve is created if you wish. In this example, the **fence** profile that we created earlier was used.
+
+An important thing to note is that these settings can be organized in profiles. This is not mandatory, but it can be useful if you are creating different categories of curves because it allows you to avoid having to change the settings all the time. If you organize your settings in profiles, you can simply select the profile and the settings will update automatically.
+
+#### Creating a Curve
+
+In order to create a curve, give the curve a name and click on the **Create curve** button. This will create a new curve and add it to the **Curves** list in the Inspector:
+
+![](curves_list_and_settings.png)
+
+You can have as many curves as you wish and you can select them in this list and make changes to them. Note the settings that exist below the curves list. These can be used to change the settings for each created curve.
+
+Moving the mouse over the scene view, you will see a small tick. This represents the first control point of the curve. In order to actually build the curve, follow the next steps:
+
+1. **left-click** to add a new control point;
+2. keep adding control points and move the mouse to establish their position;
+3. when done, hold down **[SHIFT]** and **left-click** to commit;
+
+The next image shows a simple fence that was constructed using the **fence** profile:
+
+![](fence_example.png)
+
+#### Manipulating Control Points
+
+You can select control points by clicking on them. You can hold down **[CTRL]** and **left-click** to append. You can press **[CTRL + A]** to select all control points inside a curve.
+
+You can insert a new control point by pressing **[C]**. This will allow you to move the mouse cursor next to the curve and **left-click** to insert a new control point.
+
+There are 3 gizmos available:
+
+- move gizmo - move selected control points;
+- rotation gizmo - rotate the entire curve around its center point;
+- scale gizmo - scale the curve from its center point;
+
+You can press **[SHIFT + F]** to project the curve on the object that resides under the mouse cursor or the grid.
+
+#### Duplicating Curves
+
+You can press **[CTRL + D]** to duplicate the curves that are selected inside the curves list. **Note: **The scene view has to have focus for this to work. So make sure you click (any mouse button will do) in the scene view first before duplicating. This can be useful in some situations because it helps you avoid having to build a curve from scratch:
+
+![](curve_duplication.png)
+
+#### Terrain Projection
+
+When placing curves on top of terrains that have many hills or bumps, moving the control points around might cause certain objects to become embedded inside the terrain or float above it. You can fix this by projecting control points using the **[SHIFT + F]** hotkey discussed earlier, but sometimes there is simply not enough control point granularity and adding more may not be feasible and/or may not fix the problem.
+
+The best way to handle this is to enable terrain projection for all objects that reside inside a curve. Control points won't be affected, but the objects will always sit on top of the terrain.
+
+![](curve_terrain_prj_mode.png)
+
+This will ensure that the spawned objects will be projected on top of the terrain that is sitting below them no matter where the control points are positioned. 
+
+![](pre_post_curve_terrain_projection.png)
+
+The image on the left shows how a curve might look like without projection enabled. The image on the right shows the result after the projection feature has been enabled.
+
+By default, when the objects are projected on the terrain, their up axis will be aligned to the terrain surface normal. If you wish to change this, go to the **Curve Prefab Profile** window, select the prefabs and uncheck the **Align up axis when projected** field:
+
+![](align_up_axis_when_prj.png)
+
+#### Multiple Lanes & Overlaps
+
+You can spawn objects along multiple lanes that run parallel to the same curve. The following image shows a new curve that uses a different prefab profile and has had its lane count set to 3:
+
+![](curve_lanes_random_padding.png)
+
+The curve settings have been changed as shown below:
+
+![](curve_lane_settings_random_padding.png)
+
+---
+
+**Note: ** When using more than 1 lane, it is possible for objects to overlap in places where the curve takes a steep curve. You might need to adjust the position of control points to reduce overlap.
+
+---
+
+---
+
+**Note: **When any kind of randomization is used, the objects will swirl around when you move the control points. This is because moving the control points causes the entire curve to be refreshed and randomization causes different values to be used each time.
+
+---
+
+Overlap can also happen even when using a single lane:
+
+![](one_lane_overlap_example.png)
+
+For the one lane case, you can check the **Try fix overlap** toggle in the curve settings to eliminate the overlap:
+
+![](try_fix_overlap_ui.png)
+
+The next image shows the same curve but with this toggle checked:
+
+![](one_lane_overlap_example_fix.png)
+
+---
+
+**Note: **As the name suggests, the **Try fix overlap** functionality will **attempt** to fix the overlap but there are edge cases where this won't work.  Also, sometimes you might see objects being pushed aside (i.e. away from the curve). When this happens you will need to move some of the control points around the area where this happens.
+
+---
+
+#### Prefab Forward & Up Axes
+
+Each prefab used inside a curve has 2 axes associated with it:
+
+- **forward axis** - points in the direction the curve is moving/extending;
+- up axis - runs perpendicular to the curve;
+
+These can be set from the **Curve Prefab Profile** window:
+
+![](fw_and_up_axes_curve_prefabs.png)
+
+A visual representation of these axes can be seen below:
+
+![](fw_up_axes_visual.png)
+
+Possible values are:
+
+- **X**- the prefab local X axis;
+- **Y** - the prefab local Y axis;
+- **Z** - the prefab local Z axis;
+- **Longest** - the lonest prefab local axis;
+- **Shortest** - the shortest prefab local axis;
+
+---
+
+**Note: **You might see strange/incorrect results if the forward and up axes are mapped to the same prefab local axis. For example, you might set the forward axis to **Longest** and the up axis to **Y**. But if the longest axis is **Y**, then the 2 are actually the same. As a rule of thumb, if objects look weird along the curve, this should be the first thing to look into.
+
+---
+
 ### Physics Spawn
+
+![](phys_spawn_btn.png)
+
+**Physics Spawn** allows you to spawn objects using physics simulation.
+
+## Mirroring
 
 ## Integer Patterns
 
