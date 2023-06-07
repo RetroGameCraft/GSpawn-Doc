@@ -1308,9 +1308,13 @@ You can insert a new control point by pressing **[C]**. This will allow you to m
 
 There are 3 gizmos available:
 
-- move gizmo - move selected control points;
-- rotation gizmo - rotate the entire curve around its center point;
-- scale gizmo - scale the curve from its center point;
+- move gizmo **[W]** - move selected control points;
+- rotation gizmo **[E]** - rotate the entire curve around its center point;
+- scale gizmo **[R]** - scale the curve from its center point;
+
+You can also change the current gizmo from the gizmo toolbar:
+
+![](curve_gizmos_toolbar.png)
 
 You can press **[SHIFT + F]** to project the curve on the object that resides under the mouse cursor or the grid.
 
@@ -1411,15 +1415,337 @@ Possible values are:
 
 ![](phys_spawn_btn.png)
 
-**Physics Spawn** allows you to spawn objects using physics simulation.
+**Physics Spawn** allows you to spawn objects using physics simulation. 
+
+![](physics_settings_ui.png)
+
+The first thing you need to do is to setup one or more [random prefab profiles](##Random Prefab Profiles). Then, you have to set the **Random prefab profile** field to the profile you created. When spawning objects, the tool will randomly pick a prefab inside this profile and drop it in the scene with physics simulation.
+
+To spawn:
+
+- **left-click**
+
+OR
+
+- hold down the left mouse button and drag;
+
+![](phys_spawn_pile.png)
+
+The image above shows how the **Physics Spawn** tool was used to spawn barrels and crates.
+
+The green circle represents the drop area. Prefabs are randomly picked from the random prefab pool and a random position is generated inside this circle. You can hold down **[CTRL]** and use the scroll wheel to change the radius.
+
+The white line represents the drop height. Hold down **[SHIFT]** and use the scroll wheel to change the height.
+
+**Drop interval** specifies the drop frequency. For example, a value of 0.1 means that when dragging the mouse, objects will be dropped every 0.1 seconds.
+
+The **Instant** toggle allows you to specify if the simulation should play out instantly. By default, this is unchecked, which means that you will actually get to see how objects fall to the ground and collide with the environment. 
+
+You should keep the **Simulation step** field to a value smaller than **0.03** as suggested in the [Unity Docs](https://docs.unity3d.com/ScriptReference/Physics.Simulate.html).
+
+The **Out of bounds Y** field allows you specify the Y position where physics objects are considered to be out of bounds. When an object reaches this position, it will automatically be destroyed. This is useful because some objects might spawn in places where there might not be any ground below them or they might roll off a surface such as a terrain and begin to fall down 'forever'. 
+
+#### Undo/Redo
+
+When the **Instant** field is unchecked, you should wait until the simulation has finished before you **Undo & Redo**. Otherwise, if you **Undo** and then **Redo**, the object positions will be incorrect. If you have to **Undo & Redo** frequently, it is best to check the **Instant** toggle.
 
 ## Mirroring
 
+Mirroring is a very handy feature which allows you to work on areas of your levels that contain symmetry. This feature works by giving you control over a gizmo that defines the mirror planes against which objects can be mirrored.
+
+Mirroring is available in selection mode and also in spawn mode for the following spawn tools:
+
+- **Modular Snap**;
+- **Segments**;
+- **Box**;
+- **Props**;
+- **Tile Rules**;
+
+### The Mirror Gizmo
+
+The next image shows how a mirror gizmo looks like:
+
+![](mirror_gizmo.png)
+
+The cone handles allow you to move the gizmo around in the scene. Hold down **[CTRL]** to enable snapping.
+
+The circles allow you to rotate the gizmo. Again, **[CTRL]** enables snapping. By default the rotation handles are hidden. You need to check the **Rotation handles** field in the mirror gizmo settings to make them visible.
+
+The white cube handle in the middle allows you to drag the mirror around in the scene by snapping it to the grid or to object bounding volumes. When the mouse hovers an object, the mirror will snap to the intersection point between the mouse cursor and the object and then it will snap it to the scene grid.
+
+To toggle the gizmo, press **[CTRL + Q]**.
+
+To snap the mirror into view, press **[CTRL + F]**.
+
+### Multiple Mirror Planes
+
+In the previous example, only a single mirror plane is enabled, but a maximum of 3 planes can be used at the same time to mirror along different axes at once. The next image shows the same gizmo with 2 and 3 planes enabled:
+
+![](multiple_mirror_planes_example.png)
+
+### Mirror Gizmo Settings
+
+The next image shows the mirror gizmo settings which can be changed from the UI:
+
+![](mirror_gizmo_settings.png)
+
+The **Position** and **Rotation** fields allow you to modify the position and rotation values form the UI. Although the handles can be used for the same purpose, the UI allows you to be precise.
+
+The **Mirror rotation** toggle should be checked if object rotations should also be mirrored. If unchecked, only the object positions will be mirrored.
+
+**Mirror spanning** allows you to specify if objects that are spanning one of the mirror planes should be mirrored or ignored.
+
+**Move snap step** allows you to control the amount of movement applied when moving the gizmo with the handles while snapping is enabled.
+
+Pressing the **Use grid cell size** button will set the move snap step to the grid cell size. You will have to press this button again if you change the grid cell size later.
+
+The **Rotation handles** toggle allows you to toggle the visibility of the rotation handles. For example, if you don't wish to apply any rotations to the gizmo (at least not using the circle handles), then you can uncheck this toggle.
+
+**Rotation snap step** defines the rotation step used when rotating with the circle handles while snapping is enabled.
+
+Finally, the 3 colored squares allow you to toggle the visibility of the mirror planes. They are color coded so you can easily match them.
+
+---
+
+**Note: **The gizmo settings are not shared between different contexts. For example, the mirror settings used in **Selection Mode** are not shared with the mirror setting used in **Modular Snap**, **Segments**, **Box** etc. Each tool that supports mirroring has their own mirror settings. 
+
+---
+
+#### Rotation Mirroring
+
+In the previous section the mirror gizmo settings were discussed and the **Mirror rotation** field was mentioned. This section will discuss this field in a bit more detail.
+
+Not all objects require this field to be checked. For example, the image below shows a few examples of objects that don't require rotation mirroring:
+
+![](object_no_mirror_rotation.png)
+
+The next image shows an example of a few object that do require rotation mirroring to be enabled:
+
+![](object_with_mirror_rotation.png)
+
+Let's the **inner corner** object from the image above and mirror it **without** rotation mirroring enabled and see what this looks like:
+
+![](mirrored_no_rotation.png)
+
+Although this may sometimes be what you need, most of the times this will probably be incorrect. What you will need is something like this:
+
+![](mirrored_with_rotation.png)
+
+And this can be accomplished by checking the **Mirror rotation** toggle.
+
+When the **Mirror rotation** toggle is checked, the plugin will have to set the scale of the object to a negative value along one if is local axes. This means that if you use physics, you might get the following warning show up in the console window:
+
+![](box_colliders_neg_scale_msg.png)
+
+This is meant to inform you that in some situations the negative scale can cause issues with the collision detection. For the most part, you can safely ignore this message.
+
+However, in case you are using objects whose box colliders have their **center** offset from the mesh such that the collider sits on one side of the mesh, issues can indeed arise.
+
+For example, the following image shows an example of a situation where negative scale can cause issues:
+
+![](box_collider_center_offset.png)
+
+---
+
+**Note: **The box collider center has been offset along the X axis intentionally for the purposes of this discussion.
+
+---
+
+Note how the box collider sits right next to the actual mesh object. Now, if we were to set the scale of the object to -1 along the X axis, the position of the box collider would be flipped:
+
+![](fipped_box_collider.png)
+
+This means that you were expecting the box collider to be sitting to the right, the negative scale has flipped it on the other side without you being aware of it and collisions would no longer happen as expected.
+
+### Object Spawn Mirroring
+
+In order to use the mirror gizmo in **Spawn Mode**, switch to a spawn mode that supports mirroring and activate the mirror gizmo. From the on, every object spawned using that tool will be mirrored accordingly.
+
+The next image shows an example of using the mirror gizmo using the **Segments Spawn** mode:
+
+![](mirror_segments_spawn_ex.png)
+
+In the next example **Box Spawn** is used and the mirror gizmo has 2 planes:
+
+![](mirror_box_spawn_example.png)
+
+Mirroring is more restricted when using it with **Tile Rule Spawn**. The mirror gizmo doesn't have rotation handles and you can't rotate the mirror in any way. Also, the mirror gizmo settings are unique to each tile rule grid.
+
+Also, if you mirror vertically, placing ramps may produce unexpected results:
+
+![](tile_rule_ramp_mirroring_as_platform_.png)
+
+Due to the nature of mirroring, the mirrored ramp tile is placed below the upper tiles and it becomes a platform. The same happens to the tiles that the ramp is connected to. They are all turned into platforms. For this sort of environment, mirroring along the vertical axis doesn't make much sense. You can however, mirror along the horizontal axes (X & Z axes).
+
+Vertical mirroring might be useful if you were using the **Tile Rule Spawn** tool with tile blocks.
+
+### Selection Mirroring
+
+In order to mirror the selected objects, activate the mirror gizmo and then press **[M]** on the keyboard.
+
 ## Integer Patterns
+
+An integer pattern is simply a collection of integer values such as **<1, 2, 3, 2, 1>** for example. 
+
+They are used with:
+
+- **Segments Spawn** - a pattern defines the height of each stack inside the segment chain (height mode must be set to **Pattern**);
+- **Box Spawn** - a pattern defines the height of the box shape along a certain direction (height mode must be set to **Pattern**);
+- **Tile Rule Spawn** - available for the segments brush (height mode must be set to **Pattern**);
+
+### Creating an Integer Pattern
+
+Open **Tools > GSpawn > Windows > Integer patterns...**
+
+The following window will appear on the screen:
+
+![](int_pattern_wnd.png)
+
+Enter a name in the text field at the bottom left and click on the **plus** icon to create a new pattern.
+
+![](int_pattern_triangle.png)
+
+In the image above a pattern called **triangle** was  created. In the right pane, we can see the pattern syntax.
+
+Press **Compile** to compile the pattern. If there are no syntax errors, the pattern is now ready to be used. You need to press **Compile** whenever you make changes to the pattern.
+
+Let's see what happen if we use this with **Segments Spawn**:
+
+- activate the **Segments Spawn** mode;
+- set the **Height mode** to **Pattern**;
+- set the **Pattern** field to **triangle**;
+
+This is the result we get:
+
+![](segments_height_pattern.png)
+
+Notice how the integer pattern is used to control the height of each stack of objects.
+
+Wherever patterns are used (Segments, Box, Tile Rules), there is a **Wrap mode** field available in the Inspector.
+
+The **Wrap mode** field controls what happens when exceeding the number of values inside the pattern. Patterns will most likely be quite short, but the structures you build, will probably be a lot longer. Settings the **Wrap mode** to **Repeat** will cause the height pattern to wrap around. In the image above, the pattern repeats 3 times. 
+
+Setting the **Wrap mode** to **Clamp** will cause the plugin to use the last value in the pattern when no more values are available.
+
+You can also mirror the pattern by setting the **Wrap mode** to **Mirror**.
+
+### Integer Pattern Syntax
+
+In order to construct a pattern, you need to write 'code' in the right pane inside the pattern window.
+
+The **add** command appends a sequence of values to the pattern and we have already seen it in action. 
+
+An **expression** produces a sequence of values. In the previous example, the expression is a list of values such as **1, 2, 3, 2, 1** separated by comas.
+
+In order to add values to a pattern you need to write **add(expr);** (note the semicolon) where **expr** is a valid expression that produces a sequence of integer values.
+
+Here are a few examples:
+
+- **add(3, 2, 2, 3)**;
+
+- **add(isoTriangle(4))**;
+
+  The **isoTriangle** expression creates and isosceles triangle and the argument (**4** in this case) represents the triangle height. The pattern produced is **<1, 2, 3, 4, 3, 2, 1>**.
+
+- **add(isoTriangle(-4));** 
+
+  Same as above, but produces an upside down triangle: **<-1, -2, -3, -4, -3, -2, -1>**;
+
+- **add(steps(5, 2, false));**
+
+  The **steps** expression can be used to create a stair-like pattern. The first argument (**5**) represents the number of steps, the second argument **(2)** represents the step length and the last argument must be set to either **true** or **false**. **false** means the stairs will grow upwards. **true** means the stairs will grow downwards. The pattern produced in this example is **<1, 1, 2, 2, 3, 3, 4, 4, 5, 5>**.
+
+You can add an offset to an expression: **add(isoTriangle(4) + 3);** 
+
+This produces **<4, 5, 6, 7, 6, 5, 4>**:
+
+![](iso_triangle_offset_ex.png)
+
+Negative offsets are also allowed: **add(isoTriangle(-4) - 3);**
+
+This produces:
+
+![](iso_triangle_neg_offset.png)
+
+Another example: **add({1, 2, 2, 2, 4} + 2);**
+
+Produces:
+
+![](int_pattern_last_ex.png)
+
+---
+
+**Note: **Instead of using offsets when defining the pattern, you can also hold down **[SHIFT]** and use the mouse scroll wheel to offset the patterns up and down. This is a much better approach because it makes the patterns less restrictive (i.e. when you encode an offset inside the pattern it is always there and you can't change it unless you recompile the pattern).
+
+---
 
 ## Integer Range Prefab Profiles
 
+An **Integer Range Prefab Profile** holds a collection of prefabs where each prefab has 2 associated fields called **Min** and **Max**. These 2 fields define an **integer range**.
+
+This is useful when working with the **Segments** & **Box** spawn tools when the [**Prefab pick mode**](####Prefab Pick Mode) is set to **HeightRange**.
+
+### Creating an Integer Range Prefab Profile
+
+Open **Tools > GSpawn > Windows > Integer Range Prefabs...**
+
+![](ir_prefab_profile_wnd.png)
+
+Click on the drop-down that says **Default** and create a new profile. The next image shows an integer range prefab profile with some prefabs assigned to it:
+
+![](ir_prefab_profile_pop.png)
+
+The prefabs were assigned by dragging them from the **Prefab Manager** window and dropping them onto the integer range prefab profile window.
+
+The **Used** field can be used to temporarily ignore/disable prefabs. When **Used** is unchecked, the corresponding prefab(s) will not be picked.
+
+### Using Integer Range Prefab Profiles
+
+This type of profile can be used with the **Segments** and the **Box** spawn tools. For example, using the profile defined earlier, we can get the following result when using the **Box Spawn** tool:
+
+![](ir_example_box.png)
+
+The prefabs were assigned the following height ranges (from left to right as they appear in the profile):
+
+- **[0, 2]**
+- **[3, 5]**
+- **[6, 8]**
+
+These numbers represent the height offset that each object has inside the box shape.
+
+---
+
+**Note: **The value **0** is always treated as **'no object'** when using the **Segment** and **Box** spawn tools. So even though the first prefab has a range of **[0, 2]** only the values **1 & 2** are actually taken into account.
+
+---
+
+### The Default Pick Prefab
+
+Sometimes it may be useful to define a **default pick prefab** to handle situations where an integer value is used to pick a prefab but none of the prefab ranges include the integer value. For example, if you were to use the **Box Spawn** tool and create a box that has a height of 9, but no prefab has a range that includes this value, you could mark one of the prefabs as the **default pick prefab**. If no such prefab is available, no objects will be spawned at height offset 9.
+
+The next image shows the button that needs to be enabled in order to mark a prefab as the default pick prefab:
+
+![](def_pick_prefab_btn.png)
+
+Only one default prefab can be used per profile.
+
 ## Random Prefab Profiles
+
+A **Random Prefab Profile** holds a collection of prefabs where each prefab has a **probability** value associated with it.
+
+This is useful when working with the **Segments** & **Box** spawn tools when the [**Prefab pick mode**](####Prefab Pick Mode) is set to **Random**. Random prefab profiles are also used with the **Physics Spawn** tool.
+
+### Creating a Random Prefab Profile
+
+Open **Tools > GSpawn > Windows > Random Prefabs...**
+
+A new window will appear on the screen. Click on the drop-down to create a new profile and drag and drop prefabs from the **Prefab Manager** window:
+
+![](rand_prefab_profile_wnd.png)
+
+The image above shows a **props** profile which contains a few prefabs that could be used with **Physics Spawn**.
+
+Use the **Probability** field to control how likely a prefab is to be picked. The **Used** field can be used to temporarily ignore/disable prefabs. When **Used** is unchecked, the corresponding prefab(s) will not be picked.
 
 ## The Scene Grid
 
@@ -1465,11 +1791,390 @@ This functionality can be useful when working with multistory environments.
 
 ## Object Selection
 
+This mode allows you to work with existing objects in the scene, select them manipulate them using different tools.
+
+---
+
+**Note: ** Objects that belong to a **tile rule grid** can not be selected.
+
+---
+
+To activate this mode, click on the second button from the left in the main toolbar or just press **[2]** on the keyboard.
+
+![](activate_object_select_and_manip.png)
+
+### The Gizmos Toolbar
+
+The following image shows the gizmos toolbar that becomes visible when the **Object Selection** mode is active:
+
+![](selection_mode_gizmo_toolbar.png)
+
+The buttons are listed below, from left to right together with any applicable hotkeys:
+
+- move gizmo **[W]**;
+- rotation gizmo **[E]**;
+- scale gizmo **[R]**;
+- move/rotate/scale (universal) gizmo **[T]**;
+- extrude gizmo **[U]**;
+- mirror gizmo **[CTRL + Q]**;
+- transform pivot;
+- transform space;
+
+---
+
+**Note: **The move, rotate, scale & universal gizmos support snapping by holding down the **[CTRL]** key. The snap values can be changed using Unity's UI:
+
+![](unity_snap_step_ui.png)
+
+---
+
+### Click-Select
+
+You can **left-click** on an object to select it. Hold down **[CTRL]** and **left-click** to append to the current selection or deselect already selected objects.
+
+When you click on a game object is an instance of a prefab, the entire prefab hierarchy is selected.
+
+The Unity Editor allows you to click on the same object a second time to select the actual child object which was clicked on. This functionality is disabled by default in GSpawn, but you can enable it by opening  **Edit > Preferences** window. Click on the **GSpawn > Object Selection** item in the left pane and check the **Allow child select** toggle:
+
+![](allow_child_select.png)
+
+The reason why this functionality is turned off by default is that it can sometimes be very easy to make mistakes. For example, you might want to use [**surface snapping**](#####Surface Snapping) to snap the **hierarchy of a prefab instance** to a terrain surface. But you may have accidentally clicked on one of the child objects and selected it. If that child object is part of an LOD group, you will end up changing the position of a single LOD object while all others remain in the same place. This can cause weird behaviors to appear. Another example is accidentally selecting a child object and using the [**extrude gizmo**](###Extrude Gizmo) when in fact you wanted to extrude the entire hierarchy.
+
+### Multi-Selection Tools
+
+Multi-selection allows you to select multiple objects at once using different selection tools.
+
+Below the gizmo toolbar, there is another toolbar which allows you to pick the multi-selection tool you would like to work with:
+
+![](multi_select_tools_toolbar.png)
+
+The following tools are available (from left to right in the toolbar):
+
+- Selection Rectangle **[SHIFT + 1]** - select objects using a 2D rectangle;
+- Selection Segments **[SHIFT + 2]** - select objects using a chain of 3D segments;
+- Selection Box **[SHIFT + 3]** - select objects using a 3D selection box;
+
+#### Selection Rectangle
+
+Left click and drag the mouse to draw a rectangle on the screen. Objects which are fully overlapped by the rectangle will be selected.
+
+Holding down **[SHIFT]** while dragging, will deselect the objects.
+
+#### Selection Segments
+
+In order to use:
+
+- move the mouse to establish a starting point;
+- **left-click** to start;
+
+Each successive click adds a new segment.
+
+Actions:
+
+- **[SHIFT + left click]** - commit;
+- **[SHIFT + right click]** - remove last segment (i.e step back);
+- **[ESCAPE]** - cancel;
+
+The next image shows a situation where this tool might be useful:
+
+![](selection_segments_example.png)
+
+If you wanted to delete the brown bricks, you would have to manually click on each of those bricks. Using the selection rectangle wouldn't work as it would also select the gray bricks. With the segments tool however, we can draw a selection path and cover the brown bricks in just a few clicks.
+
+When moving the mouse, the segment end points will snap either to the grid or to object bounding volume centers.
+
+When snapping to the grid, the snap point will be one of the cell corners or the cell center point depending on which one is closer to the mouse cursor.
+
+#### Selection Box
+
+This tool can be useful for selecting blocks of objects/tiles. Very handy when working with tiles.
+
+In order to use:
+
+- move the mouse to establish a starting point;
+
+- **left-click** to start;
+- move the mouse to extend the box horizontally;
+- **left-click** to start vertical extension;
+- move the mouse to extend vertically;
+- **left-click** to commit;
+
+Pres **[ESCAPE]** to cancel.
+
+The next image shows a tile block being selected using this tool:
+
+![](using_selection_box.png)
+
+### The Selection UI Toolbar
+
+![](selection_ui_toolbar.png)
+
+The **Selection UI Toolbar** allows you to enable different kinds of UIs for different purposes:
+
+- Settings - contains different types of settings (e.g. selection, extrude gizmo, mirror gizmo);
+- Transform Tools - this UI contains a series of settings and action buttons that pertain to different types of tools that can be used to manipulate/transform selected objects;
+- Misc - miscellaneous;
+
+#### Settings
+
+##### Selection Filters
+
+The selection filters allow you to specify the **types** of objects that can be selected either by clicking on them or using the multi-select tools:
+
+![](selection_filters.png)
+
+By default only mesh and sprite objects can be selected and these can never be disabled.
+
+#### Transform Tools
+
+##### Modular Snapping
+
+You can select multiple objects and use **modular snapping** to snap them to the grid. **Modular snapping** was already discussed in [Modular Snap Spawn](###Modular Snap Spawn) so it won't be covered here.
+
+The only difference is that you can control multiple objects at once.
+
+In order to start snapping, press **[D]**. This enables the modular snap session and allows you to make the necessary changes. **Left-click** to commit.
+
+##### Surface Snapping
+
+**Surface snapping** allows you to select multiple objects and snap them to terrains or mesh surfaces. This is the same as using the [Props Spawn](###Props Spawn) tool. The difference is that you can snap multiple objects at once.
+
+In order to start snapping, press **[C]**. This enables the modular snap session and allows you to make the necessary changes. **Left-click** to commit.
+
+##### Projection
+
+**Projection** allows you to project the selected objects on the scene grid or onto other objects.
+
+![](projection_ui.png)
+
+To project onto the scene grid you can press the **Project on grid** button or press **[SHIFT + G].**
+
+To project onto another scene object you can press the **Project on object** button or press **[SHIFT + F]**. Next you have to left click on an object in the scene.
+
+The **Project as unit** field treats all object as a unit (i.e. single entity) when projecting. This means that if checked, objects belonging to different hierarchies will retain their relative positions post-projection. Otherwise, they are treated independently and projected individually on the projection surface.
+
+The **Half space** fields allows you to select where you would like to project: in front or behind. Projecting behind may sometimes be useful for example, if you wanted to project an object such as a chandelier onto a ceiling.
+
+---
+
+**Note: **When projecting on meshes, the projection will happen along the normal of the triangle that was picked with the mouse cursor.
+
+---
+
+##### Vertex Snap
+
+**Vertex snapping** allows you to snap objects using their vertices. This is similar to Unity's own vertex snapping functionality.
+
+To use:
+
+- hold down **[V]**;
+- move the mouse to pick a vertex belonging to one of the selected objects;
+- **left-click** and drag to snap to nearby object vertices or grid;
+
+##### Box Snap
+
+**Box snapping** is almost similar to vertex snapping, but instead of using object vertices, the object bounding volume corners and center are used instead. 
+
+To use:
+
+- hold down **[B]**;
+- move the mouse to pick a box corner or its center (depending which one is closer to the mouse cursor);
+- **left-click** and drag to snap to nearby object bounds or to the grid;
+
+#### Misc
+
+##### Selection Grow
+
+Consider the following small scene:
+
+![](sel_grow_0.png)
+
+One of the gray tiles is selected and we would like to extend the selection to include all the tiles in the **L** shape. Pressing **[SPACE]** will do just that:
+
+![](sel_grow_1.png)
+
+If we wanted to constrain the selection to include only prefabs that belong to the original selection, we can change the grow settings by checking the **Prefab constraint** field:
+
+![](sel_grow_ui.png)
+
+Assuming we started with a single gray tile selected, this time around, the grow operation will only include the gray tiles:
+
+![](sel_grow_2.png)
+
+The **Distance threshold** allows you to specify the distance tolerance between objects. For example, let's assume that we also wanted to select the brown tiles in the square shape in the image above. We would set the distance tolerance to 1 and press **Grow** (assume that the prefab constraint is either unchecked or that a gray and brown tile were initially selected).
+
+The **X/Y/Z constraint** toggles allow you to constrain the directions in which the grow operation can extend. 
+
+### Creating Prefabs From Selected Objects
+
+You can easily create prefabs from the selected objects by following these steps:
+
+- select objects in **Selection Mode**;
+- open the **Prefab Library** window;
+- click on the **Create prefab...** button:
+
+![](create_prefab_btn.png)
+
+- a new window will appear on the screen:
+
+![](create_prefab_wnd.png)
+
+Once all settings are configured, press the **Create** button. This will create the prefab in the specified folder. If a prefab with the same name already exists, you will be asked if you wish to overwrite it.
+
+Prefab creation fields:
+
+- **Prefab name** - the name of the prefab asset;
+- **Destination folder** - the folder in which the prefab asset will be placed. You can enter the name manually, or you can drag and drop a folder in the text fields;
+- **Pivot** - allows you to specify where the pivot of the resulting prefab will reside;
+- **Pivot object name** - if this field is empty, the **pivot** will be calculated using the bounding volume of the entire prefab hierarchy. Otherwise, this name should be the name of an object whose bounding volume will be used for the pivot calculation. This field is mostly useful then the **Pivot** field is set to **Tile Rule**;
+
+The image below shows 3 objects which were selected in order to create a bridge tile rule:
+
+![](prefab_creation_selected_objects.png)
+
+When using this functionality **to create tile rules**, the **Pivot** should be set to **TileRule** and the **Pivot object name** field should be set to the name of the object that would normally sit on the tile rule grid surface. In the image above, this is the floor object whose name is **Base_03**. If **Pivot object name** is empty, the plugin will pick the object with the largest bounding volume and use that for calculating the pivot.
+
+### Extrude Gizmo
+
+The extrude gizmo allows you to duplicate objects along a certain direction.
+
+![](extrude_gizmo.png)
+
+The **cone** handles allow you to extrude along one axis while the **small dots** allow you to extrude along 2 axes at once. Here is an example of extruding along one axis:
+
+![](sgl_axis_extrude.png)
+
+Here is an example of extruding along 2 axes at once:
+
+![](dbl_axis_extrude.png)
+
+Post extrusion, the objects that were spawned as a result, will be added to the selection. This allows you to 'chain' extrude operations.
+
+In the image below, the object was first extruded along the red axis, then the entire result was extruded along the blue axis:
+
+![](extrude_chain.png)
+
+
+
+### Non-Selectable Objects
+
+The following objects can not be selected using the selection tools:
+
+- objects that don't satisfy the [type filter](#####Selection Filters) criteria;
+- the **GSpawn** game object;
+- objects that belong to layers for which picking was disabled:
+
+![](layer_picking_disabled.png)
+
+- objects for which picking was disabled inside the hierarchy window:
+
+![](unity_picking_disabled.png)
+
+- children of a tile rule grid;
+
 ## Object Erase
+
+The **Object Erase** mode allows you to erase objects in the scene using different erase tools.
+
+---
+
+**Note: ** Objects that belong to a tile rule grid can not be erased.
+
+---
+
+To activate this mode, click on the third button from the left in the main toolbar or just press **[3]** on the keyboard:
+
+![](activate_erase_mode.png)
+
+### Erase Tools
+
+The following erase tools are available:
+
+- **erase cursor [SHFIT + 1]** - erase objects using the mouse cursor;
+- **2D erase brush [SHIFT + 2]** - erase objects using a 2D circular brush;
+- **3D erase brush [SHIFT + 3]** - erase objects using a 3D circular brush;
+
+You can change the radius of the erase brush from the UI or you can use **[CTRL + scroll wheel]** for the same purpose.
+
+The **Cursor** and **2D Brush** are useful when you would like to delete large amounts of objects quickly in a certain area. 
+
+The **3D Brush** can be great for clearing areas on terrains or even floors or walls. For example, you might have a an area of the level that contains a series of decorations on a flat wall. You could place the brush on the wall and drag it around to clear up the area.
+
+The next image shows an example of using the erase brush to erase a bunch of props:
+
+![](3D_erase_brush_example.png)
+
+the 3D brush is also very useful when used in conjunction with the **Scatter Brush Spawn** tool.
+
+### Erase Mask
+
+Sometimes you may want to prevent certain objects from being erased. This is achieved by masking them: 
+
+- switch to **Selection Mode**;
+
+- select the objects you wish to mask;
+
+- switch to **Erase Mode**;
+
+- click on the **Mask selected** button:
+
+![](erase_mask.png)
+
+The selected objects will be added to the **Erase Mask** list as shown above. In this example, a single object called **Platform** was masked.
+
+If you wish to unmask objects, select them in the mask list and press **[DELETE]** to delete them.
+
+### Non-Erasable Objects
+
+The following objects can not be erased using the erase tools:
+
+- masked objects;
+- the **GSpawn** game object;
+- objects that belong to [layers](##Object Layers) that have been marked as non-erasable;
+- [terrain mesh](##Terrain Meshes) objects;
+- [spherical mesh](##Spherical Meshes) objects;
+- objects for which picking was disabled inside the hierarchy window:
+
+![](unity_picking_disabled.png)
+
+- [object groups](##Object Groups);
+- children of a tile rule grid;
+
+### Erase Cull Plane
+
+The **Cursor** and **2D Brush** tools support a feature called **erase cull plane**. This can be used in situations where you would like to erase a bunch of objects but ignore the objects behind them. 
+
+You can enable the cull plane in 2 ways:
+
+- **[SHIFT]**;
+
+  OR
+
+- check the **Enable cull plane by default** field in the Inspector. In this case **[SHIFT]** will disable the cull plane (i.e. works in reverse);
+
+---
+
+**Note: **The cull plane works well with simple objects such as tiles, but they don't play too well with more irregular meshes because these can have many different triangles pointing in all sorts of directions and it becomes harder to predict the cull plane in that case.
+
+---
+
+### Erase Height
+
+When using the **3D Brush** you can specify a height value that will essentially turn the circle into a cylinder. This is useful for erasing objects that sit slightly above the surface on which the brush is sitting. It is a sort of tolerance value.
+
+A vertical line can be seen going out of the center of the brush and extending along the circle plane normal. This acts as an indicator for the height:
+
+![](height_indicator.png)
 
 ## Object Groups
 
 ## Object Layers
+
+## Terrain Meshes
+
+## Spherical Meshes
+
+
 
 
 
