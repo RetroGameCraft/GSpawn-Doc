@@ -13,12 +13,6 @@ In addition to the info provided in this document, you may also want to take a l
 
 Although this document does discuss some of the hotkeys which are available, it doesn't contain a complete list.  For a complete list of hotkeys, please see the **GSpawn - Shortcuts** document in the **GSpawn - Level Designer/Docs** folder.
 
----
-
-**Note: **This document will focus on the most important features and it doesn't contain a complete listing of the settings/UI controls. Most of the UI controls contain useful tooltips which can clarify their purpose.
-
----
-
 ## Support
 
 For support, contact **octamodius@yahoo.com**
@@ -2168,13 +2162,290 @@ A vertical line can be seen going out of the center of the brush and extending a
 
 ## Object Groups
 
+Object groups are a great way to organize your scene. Instead of spawning objects at the root level you might wish to organize your scene into a more logical structure.
+
+An object group is simply a scene object that acts as a container for child objects and it can be used to organize objects in categories.
+
+For example, the following hierarchy of object groups might be used to organize the scene:
+
+![](object_group_hierarchy_0.png)
+
+This is just an example, but this hierarchy could be used to create an apartment scene. Prop objects could go into the **og_props** groups, floors could go inside **og_floors** and so on.
+
+---
+
+**Note: **The **og_** prefix is just a convention. You can name the object groups as you wish. However, object groups can not have duplicate names. If you attempt to create an object group using a name that is already used, the plugin will append a suffix to the name.
+
+---
+
+### Creating Object Groups
+
+Open **Tools > GSpawn> Windows > Object Groups...**
+
+The following window will appear on the screen:
+
+![](object_groups_wnd.png)
+
+One way to create object groups is by entering a name in the bottom text field and then pressing the **plus** icon next to it.
+
+Another way, is to create **empty objects** using Unity's interface (e.g. right click in hierarchy window and press **Create Empty**) and then dropping those objects inside the object group window. The next image shows the same window after the object group hierarchy discussed previously was dragged and dropped into the object group window:
+
+![](object_groups_wnd_populated.png)
+
+In this example, the **og_apartment** group and **all its children** were **first selected in the hierarchy window** and then dropped into the object group window. If only **og_apartment** was selected, then its children would not be added to the object group window and they would not be recognized as object groups.
+
+### Deleting Object Groups
+
+In order to delete object groups, select them inside the **Object Group** window and press **[DELETE]**. This will **NOT** delete the scene objects. It merely tells the plugin to stop treating them as object groups.
+
+If you wish to also delete the scene objects, press the **red X** button in the top toolbar. This will also delete the scene objects.
+
+---
+
+**Note: **It is recommended to avoid deleting object groups using Unity's interface (e.g. selecting them in the hierarchy view and deleting them from there). This can cause errors to appear in the **Console** window.
+
+---
+
+### Object Group Actions
+
+To the right of each object group, the following buttons can be used to perform different actions (from left to right):
+
+- activate the object group;
+- deactivate the object group;
+- highlight the object group in the hierarchy window;
+- delete immediate children (only non-object group children are deleted);
+
+The top toolbar also has a few actions available:
+
+- **Create prefabs...** - opens up a new window which will allow you to create prefabs from each top level object group. In this example, a prefab would be created for the entire **og_apartment** hierarchy. This is useful when the same object group hierarchy must be used in more than one scene;
+- activate/deactivate **selected** object groups;
+- assign selected objects to **selected group**.;
+- delete selected object groups - when using the **[DELETE]** key to delete object group items from the object group window, the objects will not be deleted from the scene. The plugin simply stops treating them as object groups. However, pressing this button will also delete the objects from the scene;
+
+Activating/deactivating object groups can be very handy when working on certain types of levels such as an apartment or multistory environments because it allows you to toggle the visibility of different parts of the scene (e.g. floors, walls etc) to make certain areas more accessible.
+
+### Linking Object Groups to Prefabs
+
+After the object groups have been created, you must link prefabs to object groups. This will ensure that whenever a prefab is spawned, the object will be made a child of the linked object groups.
+
+Make sure both the **Object Group** and **Prefab Manager** windows are open.
+
+Next, follow these steps:
+
+- select prefabs in the prefab manager;
+- drag and drop the prefabs onto one of the object group items in the object group window **OR** drag and drop an object group onto the selected prefabs;
+
+![](assign_og_to_prefabs.png)
+
+In the image above, 3 prefabs were selected in the prefab manager and the **og_floors** object group was assigned to those prefabs. When a prefab is linked to an object group, the name of the object group is displayed below the prefab preview. You can press the small button with the red X to the left of the group name in order to unlink.
+
+At this point, these 3 prefabs are attached to the **og_floor** object group and whenever they are spawned in the scene they will be made children of this object.
+
+In the top toolbar of the **Prefab Manager** window, you can see the following buttons (among others):
+
+![](obj_group_btns_top_toolbar_prefab_manager.png)
+
+The first button will unlink all selected prefabs from their object groups. 
+
+The second button can be used in situations where you might have spawned prefabs in the scene and decided to create object groups later. It will assign the instances of the selected prefabs as children of the linked object groups. If the selected prefabs are not linked to an object group they will be attached to the **Default** group if any. If no **Default** group is available, they will reside at the scene root.
+
+---
+
+**Note: **When using the **Tile Rule Spawn** tool, the prefabs will always be attached to the tile rule grid even if they are linked to an object group.
+
+---
+
+### The Default Object Group
+
+The default object group is useful when you are dealing with prefabs that you do not wish to assign to any specific object group, but at the same time you don't want them to reside at the scene root. 
+
+When this is the case, create a new object group and left click on the icon to the left of the item in the object group window:
+
+![](def_obj_group_ui.png)
+
+The image above shows a new object group that has been marked as the default object group.
+
+From now on, any prefabs which are not linked to an object group, will be attached to **og_default**. 
+
+If you wish to unmark a group from being the default group, you can click on the highlighted button again. The button acts like a toggle.
+
+---
+
+**Note: **There can only be **one** default object group per scene.
+
+---
+
+### Object Groups & Multiple Scenes
+
+Object groups are not shared between scenes. When you link object groups to prefabs, those links only exist in the scene in which the linking occurs. When switching to a new scene, you will have to create new object groups and link again.
+
+---
+
+**Note: **Do not move object groups between scenes. This functionality is not supported.
+
+---
+
+There are 2 things you can do to make this process a bit faster:
+
+- use the **Create prefabs...** button in the **Object Groups** window. This will allow you to replicate object group hierarchies between different scenes. When creating a new scene, instantiate the prefab and drop the created hierarchy in the **Object Group** window;
+- in terms of linking groups to prefabs, there is a way to reuse the links from previous scenes. This is only useful when using similar object group hierarchies between scenes. Open up the **Prefab Library** window:
+
+![](auto_link_obj_groups.png)
+
+Now click on the **Auto-link object groups** button. This will traverse all the prefabs in all libraries and link each prefab to a group whose name matches one of the groups that exist in another scene.
+
+Again, the last point only works when using similar object group hierarchies. Otherwise, you will have to link manually. 
+
+What you can do is to create a 'universal' object group hierarchy that contains all object groups that will be used across all scenes. For example:
+
+![](global_og.png)
+
+With this arrangement, when you click on **Auto-link object groups**, the prefabs will always be linked to a valid group (provided that there was one assigned in the first place).
+
 ## Object Layers
+
+Open **Tools > GSpawn > Windows > Object Layers...**
+
+This will bring up the following window:
+
+![](object_layers_window.png)
+
+This is a list of all layers that Unity allows you to use. The difference is that each layer has a few properties and actions associated with it.
+
+The first column of icons to the right of the layer name allow you to control layer properties:
+
+- erasable toggle - if on, objects that belong to these layers can be erased using the erase tool. In the image above, all layers are erasable except for the layer named **NonErasable**. You can see that its eraser icon is grayed out.
+- terrain mesh - if on, objects that belong to this layer are treated as [terrain meshes](##Terrain Meshes);
+- spherical mesh - of on, objects that belong to this layer are treated as [spherical meshes](##Spherical Meshes);
+
+The second column of icons allows you to perform certain actions such as activate, deactivate and delete objects that belong to the corresponding layer.
+
+You can change the name of a layer by double-clicking on a layer item in the list. [**ENTER**] to commit or **[ESCAPE]** to cancel.
 
 ## Terrain Meshes
 
+You may sometimes need to work with terrains that are stored as a mesh asset instead of a regular **Unity Terrain**. Maybe you used a modelling package to create your own terrain for example. The plugin needs to know when this is the case in order to ensure that certain types of functionality work as expected (e.g. surface snapping).
+
+In order to tell the plugin that a mesh object has to be treated as a terrain, you have to follow these steps:
+
+- assign the terrain object to a special layer;
+- rename that layer to something meaningful (e.g. **TerrainMeshes**);
+- open **Tools > GSpawn > Windows > Object Layers...**
+- mark the layer (in this example **TerrainMeshes**) as a **terrain mesh** layer:
+
+![](terrain_mesh_layer_ex.png)
+
+### Terrain Up Axis
+
+**Unity Terrains** always use the world up axis as their up axis. In case your terrain uses a different axis, you have to follow these steps:
+
+- select the terrain mesh object;
+- set its rotation to **0** on all axes;
+- the hills of the terrain will now be pointing along one of the world axes. Let's assume that they point along the **negative Z axis**;
+- open **Edit > Preferences**... and find the **GSpawn** item hierarchy in the left pane;
+- click on the **Object** child item:
+
+![](terrain_mesh_prefs.png)
+
+- by default the **Up axis** is set to **Y**. Change it to **Z**;
+- check **Invert axis** because in this example we assume that the hills are pointing along the negative Z axis;
+
+At this point you can rotate the terrain object as you wish and use it with surface snapping.
+
 ## Spherical Meshes
 
+If you wish to create scenes where the objects are placed on top of spheres, then you need to mark those sphere objects as **Spherical Meshes**. This allows the plugin to snap objects correctly across the surface of a sphere. 
 
+In order to tell the plugin that a mesh object has to be treated as a sphere, you have to follow these steps:
 
+- assign the sphere object to a special layer;
 
+- rename that layer to something meaningful (e.g. **SphericalMeshes**);
 
+- open **Tools > GSpawn > Windows > Object Layers...**
+
+- mark the layer (in this example **SphericalMeshes**) as a **spherical mesh** layer:
+
+![](spherical_mesh_layer_examp.png)
+
+## Mesh Combine
+
+In order to reduce draw calls, you can combine meshes that share the same material. Open **Tools > GSpawn > Windows > Mesh Combine...**
+
+![](mesh_comb_wnd.png)
+
+The fields are discussed below:
+
+- **Combine static meshes** - uncheck this if you wish to ignore meshes that are associated with objects that have been marked as static;
+- **Combine dynamic meshes** - uncheck this if you wish to ignore meshes that are associated with objects that have been marked as dynamic;
+- **Combine LODs** - if checked, meshes that have LODs will also participate in the combine process. Leave this unchecked if you want to ignore LOD meshes. When this field is checked, a new filed will appear that allows you to select the LOD index that will be picked for baking;
+- **Combine as static** - if checked, the combined mesh objects will be marked as static;
+- **Combined mesh pivot** - allows you to select the pivot of the combined mesh;
+- **Combined index format** - allows you to specify the index format (16 bit vs 32 bit) of the combined mesh indices;
+- **Ignore multi-level hierarchies** - if checked, only standalone objects will be combined. These are objects that don't have parents and are not children of any other objects;
+- **Generate lightmap UVs** - check this if you are using lightmapping;
+- **Combined meshes are readable** - check this if you wish to read the combined mesh data from scripts;
+- **Disable source renderers** - if checked, the mesh renderers of the original mesh objects will be disabled when the mesh combine process is finished;
+- **Combined mesh object base name** - for each combined mesh, the plugin will create a game object to which the mesh will be attached. This is the object name's prefix. The plugin will add the material name as well as a number such as **01** at the end;
+- **Combined mesh base name** - each combined mesh is saved as an asset and this is the name prefix of the mesh assets. The plugin will add the material name and a hash number;
+- **Combined mesh folder** - this is the name of the folder where all combined meshes will be saved to.
+- **Source parent** - this is the parent object that contains the meshes that you want to combine. When using object groups, you may wish to specify the top level object group to make sure all meshes that share the same material are combined in a single mesh;
+- **Destination parent** - this is the parent object that will house all combined mesh objects;
+
+Press **Combine children** to combine all child objects of **Source parent** and store the result in **Destination parent**.
+
+Press **Combine selected** to combine only the selected objects and store the result in **Destination parent**.
+
+## The Data Folder
+
+When you install the plugin a **Data** folder will be created inside the **GSpawn - Level Designer** folder. This is where all the data is stored in the form of assets and this arrangement allows you to switch to different scenes without loosing the data. 
+
+As long as the **GSpawn** game object is in the scene, you can not delete the **Data** folder. If you wish to delete it, you need to delete the **GSpawn** object first.
+
+### Exporting Data
+
+Although the data is maintained between scenes that belong to the same project, once you begin a new project all the data will be lost. However, you can export the data as a Unity package and import that package inside the new project.
+
+Open **Tools > GSpawn > Windows > Export Data...**
+
+The following window will appear on the screen:
+
+![](export_data_wnd.png)
+
+The toggles allow you to specify what data you would like to export. Most of these are self explanatory, maybe except for **Export general settings**. This refers to most settings that you can see in the Inspector UI. Here are a few examples:
+
+- modular snap settings (spawn mode or selection mode);
+- surface snap settings (spawn mode or selection mode);
+- mirror gizmo settings (spawn mode or selection mode);
+- selection settings;
+- erase settings etc;
+
+You **can not export** the following:
+
+- prefab library profiles;
+- object groups;
+- curves;
+- erase masks;
+- any other data that references assets or scene objects;
+
+## Hints & Gotchas
+
+- don't attach object groups to objects that can be erased (e.g. meshes, sprites etc). This can lead to accidentally deleting object groups when using the erase brush. Instead, try to make sure all object groups are either attached as children of other groups or have no parent at all;
+- don't move object groups between different scenes. The plugin uses a global id to store them internally and this id seems to change when the object is moved to a different scene. This can cause unexpected results;
+- when combining meshes, if the **Generate lightmap UVs** toggle is checked, the mesh combine process can be slow. If you see the progress bar getting stuck at some point, don't be misled into believing that the plugin crashed. If you wait a bit, you will see the progress bar coming back to life;
+- when combining meshes, pressing the **Combine children** or **Combine selected** button will sometimes display a message box saying **"There were no meshes combined."**. When this happens you should check the **Combine static/dynamic meshes** fields. If both are unchecked, no object can participate in the combine process. Also, it is possible for example that you might be dealing with static meshes only, but the **Combine static meshes** field is unchecked. Same with **dynamic meshes**;
+- if you are using a skybox material in the **Lighting** window inside the **Environment** tab, prefab previews will be affected by it. If this affects the quality of the prefabs, you should disable the skybox material, regenerate the prefab previews from **Tools > GSpawn > Actions > Refresh Prefab Previews** and then enable the skybox material again. If you find yourself adding and removing prefabs frequently, you might have to disable the skybox material until you finish working on your scene;
+- when using **Curve Spawn**, instead of using multiple lanes, it may sometimes produce better results to use prefabs made out of multiple objects arranged in different configurations (e.g. a prefab containing a few trees of different sizes bundled together). At the same time, try to make sure that the area covered by a single prefab is not too large. Large objects do not always project correctly onto surfaces such as terrains especially where steep surfaces exist;
+- when changing the color space, the console might get flooded with warning messages regarding an invalid render texture format. In order to fix this, switch to **Play Mode** and back. Whether these warnings appear or not, you will always have to refresh the prefab previews when you change the color space. In order to do this, click on **Tools > GSpawn > Actions > Refresh Prefab Previews**;
+
+## Known Issues
+
+- sometimes it can happen that you can no longer use the window scrollbars. When this happens, resize the window that owns the scrollbar. The scrollbar should now work properly. If it still doesn't work, switch to **Play Mode** and back;
+- same as above, but it happens in windows that use a split view (e.g. curve prefab profile window). Switching to **Play Mode** and back always fixes the issue;
+- sometimes, you might see the scene grid shaking when moving the camera. If this happens, select a bunch of objects and frame them by pressing **[F]**;
+- if you are a programmer you will be compiling scripts quite often. After script recompile, it can happen that you can no longer move the scene view camera or perform other kinds of actions. This will usually be accompanied by a message in the console complaining about a hotcontrol. If this happens, just click on an UI item (e.g. an item in the hierarchy view). This will solve the issue;
+- when saving the scene, you might sometimes see this message in the console:
+
+![](importer_native_format_warning.png)
+
+However, this doesn't seem to affect anything. It seems like this could be a known bug in Unity. More info [here](https://forum.unity.com/threads/importer-monoimporter-generated-inconsistent-result-for-asset.1018768/).
