@@ -109,6 +109,12 @@ The orange tinted libraries are empty, but they contain child libraries that con
 
 Clicking on a prefab library will update the Prefab Manager window which will show a preview with all the prefabs that exist in that library. You can select multiple libraries at once by holding down **[CTRL]** when clicking. The prefab manager will always show the contents of all selected libraries.
 
+---
+
+**Note: **It is recommended that you try to keep the number of prefab libraries under control. When you use **Undo/Redo**, the plugin needs to refresh the UI and this can cause small lags if the number of libraries gets too large.
+
+---
+
 #### Manual Library Creation
 
 You can also create libraries manually by entering a name in the bottom most text field and then clicking on the plus icon. In order to populate a library that was created manually, you must select prefab assets in the project view and then drop them inside the **Prefab Manager** window.
@@ -504,6 +510,14 @@ The next image shows an example of spawning walls using this new wall profile:
 
 ![](simple_wall_spawn_ex.png)
 
+#### Spawning Arches
+
+You are not limited to spawning walls only with this tool. For example, the next image shows how this spawn tool was used to spawn arches:
+
+![](arches_example_0.png)
+
+The left image shows the example prefab and the right image shows the final result.
+
 ### Segments Spawn
 
 ![](segments_spawn_btn.png)
@@ -662,6 +676,12 @@ In order to use this tool, the next steps have to be performed:
 
 The **tile rule spawn** tool will work with any modular prefabs that can be connected. If you can create a bunch of tiles that can connect to each other using Unity's interface, you should be able to use those prefabs with the **Tile Rule Spawn** tool. There is an exception to this, namely walls. The tile rule system doesn't handle inner and outer corners properly. So if you need to create environments where floors must have walls sitting on top, it is best to use a combination of **Modular Snap Spawn** and **Modular Walls Spawn**.
 
+---
+
+**Note: **After you paint an environment using **Tile Rules**, you can then populate it using **Modular Snap Spawn** or **Props Spawn** or any other spawn tool for that matter.
+
+---
+
 #### Creating Tile Rule Prefabs
 
 Assuming you have an asset package that contains modular prefabs and you would like to create a bunch of tiles that can be used with the tile rule spawn tool. The easiest way to do this would be to follow these steps:
@@ -794,7 +814,7 @@ The first toolbar allows you to select the current tool. There are 4 tools avail
 
 - **Paint [Q]** - paint tiles using different types of brushes;
 - **Ramp Paint [W]** - paint ramps;
-- **Erase [E]** - erase tile using different types of brushes;
+- **Erase [E]** - erase tile using different types of brushes (can also erase non-tiles, that is objects spawned with other spawn tools if the **Erase foreign objects** toggle is checked in the Inspector);
 - **Connect [R]** - connect pairs of cells in the grid;
 
 The second toolbar allows you to select the current brush. There are 3 brushes available:
@@ -1898,6 +1918,14 @@ Pres **[ESCAPE]** to cancel.
 The next image shows a tile block being selected using this tool:
 
 ![](using_selection_box.png)
+
+### Prefab Replacement
+
+When working in **Selection** mode, a very useful feature is the prefab replacement mechanism which comes in 3 flavors:
+
+- select objects, hold down **[ALT]** and left click on a prefab in the **Prefab Manager** window - this will replace the selected objects with the prefab you clicked in the manager UI;
+- select objects, hold down  **[ALT]** and left click on a prefab instance in the **Scene View** - this will replace the selected objects with the prefab you clicked in the scene;
+- select objects, select prefabs in the **Prefab Manager**, hold down **[CTRL + ALT]**, and left click on the prefab previews - this will replace the selected objects with prefabs that are picked randomly from the group of selected prefabs in the **Prefab Manager**;
 
 ### The Selection UI Toolbar
 
