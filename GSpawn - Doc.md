@@ -836,6 +836,12 @@ The second toolbar allows you to select the current brush. There are 3 brushes a
 
 ---
 
+By default, the brushes will snap adjacent to the tile hovered by the mouse cursor. This is useful in order to avoid using the **[CTRL + ALT]** hokey all the time when you wish to move up and down.
+
+If you wish to disable this automatic snapping behavior, you can uncheck the **Snap to tiles** toggle in the Inspector:
+
+![](disabled_snap_to_tiles.png)
+
 The next image shows a simple dungeon environment which was painted using a combination of **Box** and **Flexi Box** brushes:
 
 ![](simple_tile_rule_example_dungeon.png)
@@ -2470,7 +2476,6 @@ You **can not export** the following:
 
 - sometimes it can happen that you can no longer use the window scrollbars. When this happens, resize the window that owns the scrollbar. The scrollbar should now work properly. If it still doesn't work, switch to **Play Mode** and back;
 - same as above, but it happens in windows that use a split view (e.g. curve prefab profile window). Switching to **Play Mode** and back always fixes the issue;
-- sometimes, you might see the scene grid shaking when moving the camera. If this happens, select a bunch of objects and frame them by pressing **[F]**;
 - if you are a programmer you will be compiling scripts quite often. After script recompile, it can happen that you can no longer move the scene view camera or perform other kinds of actions. This will usually be accompanied by a message in the console complaining about a hotcontrol. If this happens, just click on an UI item (e.g. an item in the hierarchy view). This will solve the issue;
 - when saving the scene, you might sometimes see this message in the console:
 
