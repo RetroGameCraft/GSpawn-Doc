@@ -836,7 +836,7 @@ The second toolbar allows you to select the current brush. There are 3 brushes a
 
 ---
 
-By default, the brushes will snap adjacent to the tile hovered by the mouse cursor. This is useful in order to avoid using the **[CTRL + ALT]** hokey all the time when you wish to move up and down.
+By default, the brushes will snap to the tile hovered by the mouse cursor. This is useful in order to avoid using the **[CTRL + ALT]** hotkey all the time when you wish to move up and down. When painting, the brush will snap adjacent to the tile and when erasing, the brush will snap to the actual tile position.
 
 If you wish to disable this automatic snapping behavior, you can uncheck the **Snap to tiles** toggle in the Inspector:
 
