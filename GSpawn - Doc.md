@@ -354,7 +354,7 @@ We can see that we need to specify a **Modular wall prefab profile**. This is a 
 
 Open **Tools > GSpawn > Windows > Modular Wall Prefabs...**
 
-![](modular_walls_wnd.png)
+![](modular_walls_wnd_.png)
 
 The above window will show up on the screen and this is where you need to specify the necessary data. 
 
@@ -374,9 +374,11 @@ The following image shows the 3 prefabs that will be used in this example, each 
 
 At the bottom of the modular wall prefab window, there is a section labelled **Prefab Data**. 
 
+The first field is the most important and is called **Example prefab**.
+
 The **Up axis** field allows you to specify the prefab local axis that points up. This will usually be the Y axis.
 
-The second field is the most important and is called **Example prefab**.
+The field **Truncate forward size** is used in situations where the walls have small bumps at the sides where they connect to adjacent pieces. If these bumps exist, this toggle has to be checked, otherwise gaps can appear between the wall pieces.
 
 #### Example Prefab
 
@@ -485,10 +487,13 @@ The result can be seen in the next image:
 
 In order to use the **Modular Walls** spawn tool, the following conditions must be met:
 
-- the straight wall piece must have flat sides where it connects to adjacent pieces;
 - the straight wall piece must be larger along the connection axis than it is along its inner axis (e.g. don't use cubes);
 - when creating the example prefab, the **MiddleStraight** piece must have a rotation of **0** for all axes;
 - all wall prefab pieces must have the same up axis (i.e. if you set the rotation of all wall piece prefabs to **0** on all axes, they must all point up along the same axis);
+
+- when using wall profiles with inner and outer corners, you should avoid situations where you create a turn immediately after a corner piece. This can create overlaps or gaps in the wall. The next image shows an example of this situation:
+
+![](wall_spawn_gap.png)
 
 #### Spawning Walls With No Inner/Outer Corners
 
@@ -502,9 +507,7 @@ Note that in this case, because we don't have access to inner and outer corners,
 
 2. assign the example prefab to the **Example prefab** field;
 
-3. in the wall prefab profile window, assign the straight wall piece to the **Straight Wall** slot; **Inner & Outer** slots have to be kept blank:
-
-![](simple_wall_straight_slot.png)
+3. in the wall prefab profile window, assign the straight wall piece to the **Straight Wall** slot; **Inner & Outer** slots have to be kept blank;
 
 The next image shows an example of spawning walls using this new wall profile:
 
@@ -1372,6 +1375,18 @@ The curve settings have been changed as shown below:
 
 ![](curve_lane_settings_random_padding.png)
 
+If you wish to build forests using the curve spawn tool, you should set the **Lane mode** field to random:
+
+![](lane_mode_random.png)
+
+This will randomize the number of lanes for each slice giving you a less uniform result. Randomizing the scale of the curve prefabs and enabling jittering can also help:
+
+![](curve_spawn_forest.png)
+
+The next image shows a snapshot of the prefab settings:
+
+![](tree_curve_prefabs_settings.png)
+
 ---
 
 **Note: ** When using more than 1 lane, it is possible for objects to overlap in places where the curve takes a steep curve. You might need to adjust the position of control points to reduce overlap.
@@ -2100,6 +2115,12 @@ The following objects can not be selected using the selection tools:
 
 - children of a tile rule grid;
 
+### Selection Transfer
+
+The plugin maintains its own list of selected objects. Sometimes it may be useful to select a bunch of objects using the plugin interface and then transfer the selection to Unity's selection interface or vice versa. For example, you might wish to modify component properties which can only be done using Unity's standard interface.
+
+You can press **[ALT + T]** to quickly perform this transfer operation.
+
 ## Object Erase
 
 The **Object Erase** mode allows you to erase objects in the scene using different erase tools.
@@ -2474,9 +2495,8 @@ You **can not export** the following:
 
 ## Known Issues
 
-- sometimes it can happen that you can no longer use the window scrollbars. When this happens, resize the window that owns the scrollbar. The scrollbar should now work properly. If it still doesn't work, switch to **Play Mode** and back;
-- same as above, but it happens in windows that use a split view (e.g. curve prefab profile window). Switching to **Play Mode** and back always fixes the issue;
-- if you are a programmer you will be compiling scripts quite often. After script recompile, it can happen that you can no longer move the scene view camera or perform other kinds of actions. This will usually be accompanied by a message in the console complaining about a hotcontrol. If this happens, just click on an UI item (e.g. an item in the hierarchy view). This will solve the issue;
+- sometimes you can no longer use the window scrollbars. When this happens, resize the window that owns the scrollbar. The scrollbar should now work properly. If it still doesn't work, switch to **Play Mode** and back;
+- if you are a programmer you will be compiling scripts quite often. After script recompile, it can happen that you can no longer move the scene view camera or perform other kinds of actions.  If this happens, just click on an UI item (e.g. an item in the hierarchy view). This will solve the issue;
 - when saving the scene, you might sometimes see this message in the console:
 
 ![](importer_native_format_warning.png)
