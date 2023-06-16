@@ -17,6 +17,8 @@ Although this document does discuss some of the hotkeys which are available, it 
 
 For support, contact **octamodius@yahoo.com**
 
+Or post on the [support forum](https://forum.unity.com/threads/released-gspawn-level-designer-3d-tile-rules-curve-spawn-scatter-brush-modular-walls.1447273/).
+
 ## Assets
 
 The following assets are used in the screenshots and **are not part of the GSpawn - Level Designer package**:
@@ -338,6 +340,16 @@ Under the **Modular Snap** section you have different settings that can be modif
 - **Show alignment hints** - toggle alignment hints. Hotkey: **[SHIFT + SPACE]**;
 - **Max number of alignment hints** - the maximum number of hint labels that will be shown in the scene view. For example, a value of **2** means that if there are **10** objects that line up with the spawn guide, only **2** of them will have hint labels shown in the scene view. A smaller number is generally desired in order to avoid clutter;
 
+#### Grid Snap Axis Lock
+
+When snapping to the grid, it may sometimes be useful to lock the movement of the spawn guide along a single direction (i.e. one of the grid's axes, either the X or Z axis). You can do that by holding down the **[CTRL]** key:
+
+![](modular_snap_axis_lock.png)
+
+In the image above the **[CTRL]** key is held down and the spawn guide con only move left or right when moving the mouse. In this manner you can easily ensure that it lines up with the other columns.
+
+The plugin will pick the axis that runs horizontally across the screen. In the image above it just happens that this is the grid X axis. You can however, hold down **[CTRL + SHIFT]** to change the axis. In the previous example, this would change the lock axis so that it corresponds to the grid Z axis (blue axis).
+
 ### Modular Walls Spawn
 
 ![](modular_walls_spawn_btn.png)
@@ -354,7 +366,7 @@ We can see that we need to specify a **Modular wall prefab profile**. This is a 
 
 Open **Tools > GSpawn > Windows > Modular Wall Prefabs...**
 
-![](modular_walls_wnd_.png)
+![](modular_walls_profile_window.png)
 
 The above window will show up on the screen and this is where you need to specify the necessary data. 
 
@@ -370,15 +382,17 @@ The following image shows the 3 prefabs that will be used in this example, each 
 
 ![](wall_pieces_ex.png)
 
-#### Prefab Data
+#### Profile Settings
 
-At the bottom of the modular wall prefab window, there is a section labelled **Prefab Data**. 
+At the bottom of the modular wall prefab window, there is a section labelled **Profile Settings**. 
 
 The first field is the most important and is called **Example prefab**.
 
 The **Up axis** field allows you to specify the prefab local axis that points up. This will usually be the Y axis.
 
 The field **Truncate forward size** is used in situations where the walls have small bumps at the sides where they connect to adjacent pieces. If these bumps exist, this toggle has to be checked, otherwise gaps can appear between the wall pieces.
+
+The **Spawn pillars** toggle allows you to work with [pillars](####Spawning Pillars).
 
 #### Example Prefab
 
@@ -422,7 +436,7 @@ These names are important to the plugin because it allows it to identify the rol
 
 Finally, drop the prefab asset inside the **Example prefab** in the **Modular Wall Prefab Profile** window:
 
-![](wall_ex_prefab_field.png)
+![](wall_profile_settings.png)
 
 If there are any errors with the prefabs (e.g. incorrect naming) the plugin will show an error message in the console window.
 
@@ -520,6 +534,33 @@ You are not limited to spawning walls only with this tool. For example, the next
 ![](arches_example_0.png)
 
 The left image shows the example prefab and the right image shows the final result.
+
+#### Spawning Pillars
+
+You can also spawn pillars that sit between the different wall pieces. The next image shows an example of spawning railings with pillars:
+
+![](railings_with_pillars.png)
+
+In order to support pillars, you will need to add 4 pillar objects to the example prefab. The next image shows the example prefab that was constructed for the railing example above:
+
+![](railing_pillars_example_prefab.png)
+
+There are 2 pairs of pillars that have to be added to the example prefab:
+
+1. at the beginning and the end of the outer corner (**PillerOuterCornerBegin** & **PillerOuterCornerEnd**);
+2. at the beginning and the end of the inner corner (**PillerInnerCornerBegin** & **PillerInnerCornerEnd**);
+
+---
+
+**Note: **Don't forget that the names are important. Case doesn't matter, but the name has to be spelled exactly as it is shown in the image above.
+
+---
+
+Next, you need to check the **Spawn pillars** toggle in the wall profile settings and select a [random prefab profile](##Random Prefab Profiles) that contains the pillar prefabs:
+
+![](wall_profile_settings_with_spawn_pillars.png)
+
+At this point you are ready to spawn walls/railings with pillars.
 
 ### Segments Spawn
 
@@ -2455,7 +2496,11 @@ Press **Combine selected** to combine only the selected objects and store the re
 
 When you install the plugin a **Data** folder will be created inside the **GSpawn - Level Designer** folder. This is where all the data is stored in the form of assets and this arrangement allows you to switch to different scenes without loosing the data. 
 
-As long as the **GSpawn** game object is in the scene, you can not delete the **Data** folder. If you wish to delete it, you need to delete the **GSpawn** object first.
+This folder has to exist in the project in order for the plugin to be able to operate. If you decide to delete the **Data** folder, you will get the following message on the screen:
+
+![](delete_data_folder_question.png)
+
+If you press **Ok**, all **plugin objects** (GSpawn objects) will be deleted the next time you load the scenes in which these objects exist.
 
 ### Exporting Data
 
@@ -2502,3 +2547,47 @@ You **can not export** the following:
 ![](importer_native_format_warning.png)
 
 However, this doesn't seem to affect anything. It seems like this could be a known bug in Unity. More info [here](https://forum.unity.com/threads/importer-monoimporter-generated-inconsistent-result-for-asset.1018768/).
+
+## Changelog
+
+
+
+### GSpawn - Level Designer 3.1.2
+
+#### Improvements
+
+- Implemented [**grid snap axis lock**](####Grid Snap Axis Lock) for **Modular Snapping** which locks the movement of the spawn guide along one of the grid's axes. Can be activated by holding down **[CTRL]**. Hold down **[CTRL + SHIFT]** to switch between the grid's X and Z axes.
+
+- It is now possible to [spawn pillars](####Spawning Pillars) when using the **Modular Walls Spawn** tool.
+
+- Spawn curves now support negative padding values which is useful in some situations for covering gaps between objects.
+
+  
+
+### GSpawn - Level Designer 3.1.1
+
+#### Improvements
+
+- Deleting the Data folder will automatically delete all plugin (GSpawn) objects when loading the scenes in which such objects exist and errors and warnings no longer appear in the console window.
+
+  
+
+### GSpawn - Level Designer 3.1.0
+
+#### Bug Fixes
+
+- Fixed error being thrown after deleting the GSpawn object from the scene.
+
+#### Features
+
+- Added new pivot type **FromPivotObject** when creating prefabs from selected objects.
+
+#### Improvements
+
+- When pressing the **Fix overlaps** button, colliders are now also disabled along with the renderers.
+
+
+
+### GSpawn - Level Designer 3.0
+
+- **GSpawn - Level Designer** is a complete overhaul of the **Octave3D - Level Design** plugin.
