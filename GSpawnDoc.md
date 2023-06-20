@@ -2531,12 +2531,36 @@ You **can not export** the following:
 ## Hints & Gotchas
 
 - don't attach object groups to objects that can be erased (e.g. meshes, sprites etc). This can lead to accidentally deleting object groups when using the erase brush. Instead, try to make sure all object groups are either attached as children of other groups or have no parent at all;
+
 - don't move object groups between different scenes. The plugin uses a global id to store them internally and this id seems to change when the object is moved to a different scene. This can cause unexpected results;
+
 - when combining meshes, if the **Generate lightmap UVs** toggle is checked, the mesh combine process can be slow. If you see the progress bar getting stuck at some point, don't be misled into believing that the plugin crashed. If you wait a bit, you will see the progress bar coming back to life;
+
 - when combining meshes, pressing the **Combine children** or **Combine selected** button will sometimes display a message box saying **"There were no meshes combined."**. When this happens you should check the **Combine static/dynamic meshes** fields. If both are unchecked, no object can participate in the combine process. Also, it is possible for example that you might be dealing with static meshes only, but the **Combine static meshes** field is unchecked. Same with **dynamic meshes**;
+
 - if you are using a skybox material in the **Lighting** window inside the **Environment** tab, prefab previews will be affected by it. If this affects the quality of the prefabs, you should disable the skybox material, regenerate the prefab previews from **Tools > GSpawn > Actions > Refresh Prefab Previews** and then enable the skybox material again. If you find yourself adding and removing prefabs frequently, you might have to disable the skybox material until you finish working on your scene;
+
 - when using **Curve Spawn**, instead of using multiple lanes, it may sometimes produce better results to use prefabs made out of multiple objects arranged in different configurations (e.g. a prefab containing a few trees of different sizes bundled together). At the same time, try to make sure that the area covered by a single prefab is not too large. Large objects do not always project correctly onto surfaces such as terrains especially where steep surfaces exist;
+
 - when changing the color space, the console might get flooded with warning messages regarding an invalid render texture format. In order to fix this, switch to **Play Mode** and back. Whether these warnings appear or not, you will always have to refresh the prefab previews when you change the color space. In order to do this, click on **Tools > GSpawn > Actions > Refresh Prefab Previews**;
+
+- when using HDRP, you need to follow these steps in order for the prefab previews to render correctly:
+
+  1. select the HDRP asset and set its color buffer format to a format that has an alpha channel:
+
+     ![](hdrp_asset_alpha_color_format.png)
+
+  2. go to **Edit > Project Settings > Player** and add the **GSPAWN_HDRP** symbol:
+
+  ![](script_compile_hdrp.png)
+
+  3. if you initialized GSpawn before enabling HDRP or before performing these steps, click on **Tools > GSpawn > Actions > Refresh Prefab Previews**.
+
+     ---
+
+     **Note: **Even though this will render the prefab previews correctly, the previews appear slightly darker than normal. Currently, this issue remains unsolved.
+
+     ---
 
 ## Known Issues
 
@@ -2549,6 +2573,24 @@ You **can not export** the following:
 However, this doesn't seem to affect anything. It seems like this could be a known bug in Unity. More info [here](https://forum.unity.com/threads/importer-monoimporter-generated-inconsistent-result-for-asset.1018768/).
 
 ## Changelog
+
+
+
+### GSpawn - Level Designer 3.1.4
+
+#### Bug Fixes
+
+- Fixed transform gizmos transforming objects incorrectly when parents and children were selected at the same time.
+- Fixed prefab preview background appearing black when HDRP is used (see [Hints & Gotchas](##Hints & Gotchas)).
+- Fixed prefab preview objects rendering artifacts when HDRP is used (see [Hints & Gotchas](##Hints & Gotchas)).
+
+
+
+### GSpawn - Level Designer 3.1.3
+
+#### Bug Fixes
+
+- Fixed potential bug caused by drawing outlines outside of **Repaint** events.
 
 
 
