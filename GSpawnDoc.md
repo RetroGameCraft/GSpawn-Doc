@@ -1179,11 +1179,11 @@ Prefab randomization refers to the fact that **after** you spawn a new object, t
 
 When working with the **Props Spawn** tool, you can hold down the left mouse button and drag to spawn. 
 
-![](drag_spawn_ui.png)
+![](drag_spawn_ui_2.png)
 
 While dragging, a new object will be spawned when the mouse cursor travels a world distance >= **Min drag distance**. This allows you to adjust the distance between objects that get spawned during drag.
 
-It is recommended to keep the **Clamp min drag distance to object volume** field checked in order to avoid any overlaps between the spawn guide and the previously spawned object. **Note: **When this field is checked, the radius of the sphere that encloses the object volume will be used as a minimum drag distance.
+It is recommended to keep the **Use safe drag distance** field checked in order to avoid any overlaps between the spawn guide and the previously spawned object. **Note: **When this field is checked, the radius of the sphere that encloses the object volume will be used as a minimum drag distance.
 
 The next image shows a few barrels that were spawned using **spawn guide scale & prefab randomization** and **drag spawn**:
 
@@ -2573,6 +2573,14 @@ You **can not export** the following:
 However, this doesn't seem to affect anything. It seems like this could be a known bug in Unity. More info [here](https://forum.unity.com/threads/importer-monoimporter-generated-inconsistent-result-for-asset.1018768/).
 
 ## Changelog
+
+### GSpawn - Level Designer 3.1.5
+
+#### Improvements
+
+- added refresh prefab libs button to the top right of the **Prefab Library** window. Pressing this button will check the library folders and automatically create new prefabs if new prefab assets have been added to that folder.
+- added **Overlap test precision** field in the **Scatter Brush Spawn** tool Inspector UI. Currently, the possible values are **BoundsVSBounds** and **BoundsVSGeometry**. The latter can be used when painting on meshes such as floors or in densely populated areas.
+- added button in all prefab profile windows (random, integer range, tile rules, scatter brush etc) which creates prefabs from the prefabs currently selected in the prefab manager. This is used as an alternative to drag and drop for MAC users. 
 
 
 
