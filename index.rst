@@ -70,14 +70,10 @@ Installation
    .. image:: init.png
 
 --------------
-
-```{note}
-	Once you click on **Initialize**, the plugin will create a
+	**Note:** Once you click on **Initialize**, the plugin will create a
 	**Data** folder and populate it with some of the asset files that it
 	needs to store different settings. This might require you to wait a
 	little bit until the necessary files are created.
-```
-
 --------------
 
 When finished, the hierarchy view will show a new object in the scene
