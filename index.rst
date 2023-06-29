@@ -3,19 +3,15 @@
 What is GSpawn - Level Designer?
 --------------------------------
 
-GSpawn allows you to build and edit scenes inside the Unity Editor using
-a plethora of tools such as tile rules, curve spawn, modular snapping to
-name just a few. It can be used for creating modular & outdoor
-environments and tile worlds.
+GSpawn is a powerful tool designed to streamline the process of
+creating, editing, and managing levels for various types of video games
+inside the Unity Editor using a plethora of tools that will be detailed
+inside this document.
 
-Additional Info
+Getting Started
 ---------------
 
-In addition to the info provided in this document, you may also want to
-take a look at the tutorial videos listed
-`here <https://youtube.com/playlist?list=PLPwpt1oIEdwBiu6PkQLmj7xEbvn2TDVBu>`__.
-It is recommended that you start with the following 2 intro tutorials
-before reading this document:
+Get started with the 2 part intro video tutorial.
 
 -  `GSpawn - Intro (Part 1) (Getting Started with Modular
    Environments) <https://www.youtube.com/watch?v=moZyLynFbok>`__
@@ -71,7 +67,7 @@ Installation
 
 --------------
 
-**Note:**\ Once you click on **Initialize**, the plugin will create a
+**Note**: Once you click on **Initialize**, the plugin will create a
 **Data** folder and populate it with some of the asset files that it
 needs to store different settings. This might require you to wait a
 little bit until the necessary files are created.
@@ -156,7 +152,7 @@ To open the Prefab Manager window:
 You can then dock these windows anywhere you wish. The next image shows
 these 2 windows docked next to each other:
 
-.. image:: prefab_mgr_windows_docked.png
+.. image:: prefab_mgr_windows_docked_2.png
 
 Creating Prefab Libraries
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -172,7 +168,7 @@ drop it onto the blank area inside the Prefab Library Manager.
 The next image shows the state of these 2 windows after a prefab folder
 has been dropped inside the prefab library window:
 
-.. image:: prefab_mgr_windows_populated.png
+.. image:: prefab_mgr_windows_populated_2.png
 
 The folder **Multistory Dungeons 2** was dropped in the prefab library
 manager and the plugin has created a **hierarchy** of prefab libraries
@@ -1875,7 +1871,7 @@ environments.
 Rotation Randomization
 ''''''''''''''''''''''
 
-.. image:: spawn_guide_rotation_rand_ui.png
+.. image:: spawn_guide_rotation_rand_ui_3.png
 
 In order to randomize the rotation, check the **Randomize rotation**
 toggle and then pick the randomization axis. The default is **Surface
@@ -2450,6 +2446,162 @@ simulation has finished before you **Undo & Redo**. Otherwise, if you
 **Undo** and then **Redo**, the object positions will be incorrect. If
 you have to **Undo & Redo** frequently, it is best to check the
 **Instant** toggle.
+
+Decor Rules
+-----------
+
+When decorating environments with the **Props Spawn** tool, it may
+sometimes be difficult to spawn objects in the exact desired position.
+The next image shows an example where a lid sits next to a sarcophagus
+object, but its stance can not be reproduced using the vanilla **Props
+Spawn** tool:
+
+.. image:: decor_rule_utility_example.png
+
+Even if you tried placing the lid on top of the sarcophagus it would
+still be difficult. This is where the **Decor Rules** feature comes to
+the rescue. This is a feature that needs an example scene as input.
+Luckily, virtually all asset packs that you can purchase from the store
+are delivered with high quality demo scenes created by the artists. Once
+this scene is loaded, the plugin can parse the scene and detect the way
+in which objects decorate each other. Then, you can use this information
+to decorate your objects in your own scenes.
+
+Creating Decor Rules
+~~~~~~~~~~~~~~~~~~~~
+
+Drag and drop the prefab asset folders inside the **Prefab Library**
+window to populate it with libraries and prefabs and then switch to one
+of the demo scenes that comes with the asset pack you wish to use. In
+this example, an asset pack called `Village Interiors
+Kit <https://assetstore.unity.com/packages/3d/environments/fantasy/village-interiors-kit-17033>`__
+by `3DForge <https://assetstore.unity.com/publishers/2970>`__ was used
+and the demo scene that was loaded is called **The Crypt - TopDown**.
+
+Make sure to also initialize GSpawn in this scene before you can use it.
+
+Next, open up the **Prefab Library** window and click on the **Generate
+decor rules** button in the top toolbar as shown in the image below:
+
+.. image:: geenrate_decor_rules_btn.png
+
+A progress bar will appear and once the process is finished, you are
+ready to use the generated decoration rules.
+
+Using Decor Rules
+~~~~~~~~~~~~~~~~~
+
+In order to use the generated rules, you need to activate the **Props
+Spawn** tool and inside the Inspector, under the **Spawn Guide**
+section, you need to check the **Apply decor rules** button as shown
+below:
+
+.. image:: check_apply_decor_rules_inspector.png
+
+From now on, when you move the spawn guide with the mouse, the plugin
+will check if the object under the mouse cursor is decorated by the
+spawn guide’s prefab. If it is, the spawn guide will automatically
+change its position and rotation based on the decor rules that was
+detected.
+
+You can toggle the decor rules by pressing **[SHIFT + V]** instead of
+using the **Inspector UI.**
+
+--------------
+
+**Note:**\ Because decor rules override the spawn guide position and
+rotation, you can no longer change the rotation with the mouse. However,
+you can still change the spawn guide rotation using the **X/Y/Z** keys.
+
+--------------
+
+--------------
+
+**Note:**\ When you want to left click to spawn, make sure the **[ALT]**
+key isn’t pressed. Otherwise, it will replace spawn guide prefab.
+
+--------------
+
+Because a prefab can decorate an object in more than one way, there may
+be more than one decor rule available. You can change the current rule
+by holding down **[ALT]** and using the mouse scroll wheel. When you do
+this, you will see the spawn guide changing its position and rotation
+based on the new rule that was activated.
+
+The image below shows how the lid can be placed near the sarcophagus:
+
+.. image:: decor_rule_in_action_ex_0.png
+
+The spawn guide uses one of the lid prefabs and the mouse cursor was
+placed over the sarcophagus. The plugin has detected that the lid
+decorates the sarcophagus in 5 different ways (notice the green label
+that shows the number of available rules) and picked one of the rules to
+snap the position and rotation of the lid.
+
+Here are the other rules that apply in this case:
+
+.. image:: decor_rule_in_action_other_examples.png
+
+By holding down **[ALT]** and using the mouse scroll wheel, different
+decor rules were traversed. This allows you to quickly decorate objects
+in different ways with automatic position and rotation snapping.
+
+Here is another example of when decor rules can be usefu:
+
+.. image:: coffin_resting_floor_wall.png
+
+In the image above, the example scene shows 2 coffins that are resting
+against a wall and the floor. Again, using vanilla **Props Spawn** will
+be a bit difficult to place these coffins in this position, but when
+using decor rules, the coffins will automatically snap into place:
+
+.. image:: coffin_decor_rule_example.png
+
+We can also palce a skeleton using the same approach:
+
+.. image:: coffin_skeleton_decor_rules.png
+
+Adding New Rules
+~~~~~~~~~~~~~~~~
+
+Let’s assume that some of the prefabs that you would like to use don’t
+contain enough rules. In this case, you can follow these steps:
+
+-  create a copy of the demo scene that you would like to use;
+-  inside the demo scene copy, create the decor rules that you would
+   like using a combination of **Props Spawn** and **move & rotate
+   gizmos**. For example, you might want to add more rules for the
+   sarcophagus lid. For each rule you would like to create, place a new
+   sarcophagus and place the lid in the desired position and rotation.
+-  In the **Prefab Manager**, select the prefabs (lid prefabs in this
+   example) and click on the button highlighted in the image below:
+
+.. image:: gen_decor_rule_selected_prefabs.png
+
+--------------
+
+**Note:**\ Whenever you generate decor rules for prefabs, the old ones
+are going to be erased and replaced by the rules detected in the
+currently active scene. This is why it is important to use a single
+example scene where all possible rules exist.
+
+--------------
+
+Limitations
+~~~~~~~~~~~
+
+The **Decor Rules** feature really depends on the example input
+provided. If a prefab doesn’t decorate objects in the example scene, it
+won’t be able to take advantage of decor rules. The plugin tries to use
+name matching to borrow rules between prefabs and this can help a lot
+sometimes. For example, if the artists has created 3 versions of the
+same object: sarcophagus_01, sarcophagus_02, sarcophagus_03, but only
+sarcophagus_01 exists in the example scene, the plugin will copy the
+rules from sarcophagus_01 to the other 2 versions.
+
+Some rules may snap the spawn guide such that it floats above the
+ground. This can happen when prefabs decorate more than one object at a
+time in the same area.
 
 Mirroring
 ---------
@@ -4084,11 +4236,47 @@ However, this doesn’t seem to affect anything. It seems like this could
 be a known bug in Unity. More info
 `here <https://forum.unity.com/threads/importer-monoimporter-generated-inconsistent-result-for-asset.1018768/>`__.
 
+-  Mac users may not be able to drag and drop prefabs from the prefab
+   manager onto other windows such as the **Curve Prefab Profile**
+   window for example. If this happens, you can use the green arrow
+   button which exists in all windows in which prefabs can be dropped
+   from the prefab manager:
+
+.. image:: green_arrow_prefab_drag_alternative.png
+
+Simply select prefabs in the **Prefab Manager** and then click on the
+green arrow button to simulate the drag and drop operation.
+
 Changelog
 ---------
 
+GSpawn - Level Designer 3.2.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Features
+^^^^^^^^
+
+-  Implemented `Decor Rules <##Decor%20Rules>`__ that can be used in
+   conjunction with the **Props Spawn** tool to speed up scene
+   decoration.
+
+Improvements
+^^^^^^^^^^^^
+
+-  Mac users can use the green arrow button to simulate prefab drag &
+   drop from the prefab manager to other windows such as curve prefab,
+   random prefabs etc windows.
+
+Bug Fixes
+^^^^^^^^^
+
+-  Fixed pillars spawning in incorrect positions when using the
+   **Modular Walls** spawn tool.
+
 GSpawn - Level Designer 3.1.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _improvements-1:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4109,6 +4297,8 @@ Improvements
 GSpawn - Level Designer 3.1.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. _bug-fixes-1:
+
 Bug Fixes
 ^^^^^^^^^
 
@@ -4122,7 +4312,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-1:
+.. _bug-fixes-2:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4133,7 +4323,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-1:
+.. _improvements-2:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4153,7 +4343,7 @@ Improvements
 GSpawn - Level Designer 3.1.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-2:
+.. _improvements-3:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4165,7 +4355,7 @@ Improvements
 GSpawn - Level Designer 3.1.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-2:
+.. _bug-fixes-3:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4173,13 +4363,15 @@ Bug Fixes
 -  Fixed error being thrown after deleting the GSpawn object from the
    scene.
 
+.. _features-1:
+
 Features
 ^^^^^^^^
 
 -  Added new pivot type **FromPivotObject** when creating prefabs from
    selected objects.
 
-.. _improvements-3:
+.. _improvements-4:
 
 Improvements
 ^^^^^^^^^^^^
