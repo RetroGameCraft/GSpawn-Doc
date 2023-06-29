@@ -69,6 +69,9 @@ Installation
 
    .. image:: init.png
 
+```{note}
+Test note.
+```
 --------------
 
 **Note:**\ Once you click on **Initialize**, the plugin will create a
