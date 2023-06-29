@@ -1,0 +1,4 @@
+site_name: GSpawn - Level Designer
+
+markdown_extensions:
+  - admonition
