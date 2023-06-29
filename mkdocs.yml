@@ -1,4 +1,5 @@
 site_name: GSpawn - Level Designer
+theme: readthedocs
 
 markdown_extensions:
   - admonition
