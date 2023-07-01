@@ -2672,6 +2672,25 @@ Simply select prefabs in the **Prefab Manager** and then click on the green arro
 
 
 
+### GSpawn - Level Designer 3.2.1
+
+#### Improvements
+
+- Improved spawn guide OBB size calculation for better accuracy when using box spawn and segments spawn.
+- Minimum allowed random scale value for scatter brush and curve prefabs has been set to 0.1 to avoid issues.
+- Improved decor rule selection by keeping track of the last decor rule used when spawning an object.
+- Improved decor rule detection (less bougs rules are now detected).
+- When prefabs are copied between prefab libraries, their object groups will now also be assigned to the prefab clones.
+- Improved extrude gizmo overlap detection precision.
+- When using modular walls, the spawn guide prefab is now set to the prefab with the smallest volume. This is more intuitive when using multiple prefabs for the same wall rule.
+
+#### Bug Fixes
+
+- Objects no longer get selected with selection segments or selection box when the grid is being snapped to objects (i.e. when **[G]** is pressed).
+- Fixed exceptions being thrown when deleting data folder when the object group database is populated with object groups. This would happen when loading a scene other than the one in which the data folder was deleted.
+
+
+
 ### GSpawn - Level Designer 3.2.0
 
 #### Features
