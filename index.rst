@@ -368,7 +368,7 @@ Preferences…**
 This will open Unity’s Preferences window. In the left pane, click on
 **Input** under the **GSpawn** parent item:
 
-.. image:: prefs_wnd_input.png
+.. image:: prefs_window_input.png
 
 You can now change the keyboard rotation step for each axis
 individually.
@@ -578,7 +578,7 @@ Modular Wall Prefab Profiles
 Before this tool can be used there is a bit of setup involved. If we
 take a look in the Inspector, we can see the following settings:
 
-.. image:: modular_walls_spawn_settings_ui.png
+.. image:: modular_walls_spawn_settings_ui_2.png
 
 We can see that we need to specify a **Modular wall prefab profile**.
 This is a prefab profile that contains the necessary data which will be
@@ -886,6 +886,31 @@ prefabs:
 .. image:: wall_profile_settings_with_spawn_pillars.png
 
 At this point you are ready to spawn walls/railings with pillars.
+
+Reusing Example Prefabs
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Some asset packs contain different types of walls. They wall prefabs
+look different, but the walls connect to each other in the same manner.
+In this case, it is possible to reuse the same example prefab between
+different wall profiles.
+
+For example, the following example prefab can be used to create walls
+for a village interior basement:
+
+.. image:: village_ex_prefab_reuse.png
+
+But using the same example prefab, different types of walls can be
+created:
+
+.. image:: same_ex_prefab_diff_walls.png
+
+--------------
+
+**Note:**\ You still need to create a new wall prefab profile for each
+type of wall, but the example prefab can be reused between profiles.
+
+--------------
 
 Segments Spawn
 ~~~~~~~~~~~~~~
@@ -3738,7 +3763,7 @@ Open **Tools > GSpawn> Windows > Object Groups…**
 
 The following window will appear on the screen:
 
-.. image:: object_groups_wnd.png
+.. image:: object_groups_wnd_2.png
 
 One way to create object groups is by entering a name in the bottom text
 field and then pressing the **plus** icon next to it.
@@ -3783,8 +3808,8 @@ Object Group Actions
 To the right of each object group, the following buttons can be used to
 perform different actions (from left to right):
 
--  activate the object group;
--  deactivate the object group;
+-  activate the object group children;
+-  deactivate the object group children;
 -  highlight the object group in the hierarchy window;
 -  delete immediate children (only non-object group children are
    deleted);
@@ -3797,6 +3822,7 @@ The top toolbar also has a few actions available:
    This is useful when the same object group hierarchy must be used in
    more than one scene;
 -  activate/deactivate **selected** object groups;
+-  delete children of selected object groups;
 -  assign selected objects to **selected group**.;
 -  delete selected object groups - when using the **[DELETE]** key to
    delete object group items from the object group window, the objects
@@ -3808,6 +3834,34 @@ Activating/deactivating object groups can be very handy when working on
 certain types of levels such as an apartment or multistory environments
 because it allows you to toggle the visibility of different parts of the
 scene (e.g. floors, walls etc) to make certain areas more accessible.
+
+Action Filters
+~~~~~~~~~~~~~~
+
+At the bottom of the **Object Group** window, there is a UI section
+called **Action Filters**. These filter apply to the activate/deactivate
+children buttons to the right of each object groups.
+
+Filters are useful in situations where you are dealing with multistory
+environments. For example, you might have an object group called
+**og_floors** that contains all the floor objects in the scene. Let’s
+assume that the environment you are building has 3 floor levels. You may
+wish to place props on the second level but hide the first and last
+levels to increase visibility. In order to do this, you can follow these
+steps:
+
+-  hold down **[G]** and left click on the second level floor objects.
+   This will snap the grid so that the floors are resting on the grid
+   surface;
+-  in the **Object Group** window, uncheck the **On grid** toggle and
+   press the deactivate group children button to the right of the
+   **og_floors** group:
+
+.. image:: og_action_filters_example.png
+
+This will deactivate all floor objects in the scene which reside either
+below or above the grid. The ones that rest on the grid surface will not
+be affected and you can now work with them as needed.
 
 Linking Object Groups to Prefabs
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -4250,8 +4304,49 @@ green arrow button to simulate the drag and drop operation.
 Changelog
 ---------
 
+GSpawn - Level Designer 3.2.2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Features
+^^^^^^^^
+
+-  Added object group action filters.
+-  Added button which deletes children of selected object groups in the
+   object group window’s top toolbar.
+-  Added **Erase existing** toggle inside the **Modular Walls** spawn
+   tool UI. Having this checked, is useful when making changes to
+   existing walls by erasing them when new ones are spawned in their
+   place.
+-  Implemented shortcut logger which displays the name and hotkey of a
+   shortcut when it is used. This can be enabled from **Edit >
+   Preferences > GSpawn > Input**. It can be useful for recording video
+   tutorials.
+
+Improvements
+^^^^^^^^^^^^
+
+-  Improved decor rule usage by keeping them sorted based on relative
+   distance.
+-  The active decor rule index is now displayed in the scene view.
+-  Improved decor rule generation by ignoring added object overrides in
+   prefab instance hierarchies which was causing large gather volumes to
+   be generated leading to incorrect rules.
+
+Bug Fixes
+^^^^^^^^^
+
+-  Fixed transform gizmo center pivot not calculated correctly.
+-  Fixed decor rules causing the Unity Editor to crash when switching
+   between different scenes.
+-  Fixed modular snap vertical step not being applied correctly for grid
+   cell sizes other than 1.
+-  Fixed decor rule labels no longer changing color when hovered by the
+   mouse cursor.
+
 GSpawn - Level Designer 3.2.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _improvements-1:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4270,6 +4365,8 @@ Improvements
    prefab with the smallest volume. This is more intuitive when using
    multiple prefabs for the same wall rule.
 
+.. _bug-fixes-1:
+
 Bug Fixes
 ^^^^^^^^^
 
@@ -4284,6 +4381,8 @@ Bug Fixes
 GSpawn - Level Designer 3.2.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. _features-1:
+
 Features
 ^^^^^^^^
 
@@ -4291,7 +4390,7 @@ Features
    conjunction with the **Props Spawn** tool to speed up scene
    decoration.
 
-.. _improvements-1:
+.. _improvements-2:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4300,7 +4399,7 @@ Improvements
    drop from the prefab manager to other windows such as curve prefab,
    random prefabs etc windows.
 
-.. _bug-fixes-1:
+.. _bug-fixes-2:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4311,7 +4410,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-2:
+.. _improvements-3:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4332,7 +4431,7 @@ Improvements
 GSpawn - Level Designer 3.1.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-2:
+.. _bug-fixes-3:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4347,7 +4446,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-3:
+.. _bug-fixes-4:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4358,7 +4457,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-3:
+.. _improvements-4:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4378,7 +4477,7 @@ Improvements
 GSpawn - Level Designer 3.1.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-4:
+.. _improvements-5:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4390,7 +4489,7 @@ Improvements
 GSpawn - Level Designer 3.1.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-4:
+.. _bug-fixes-5:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4398,7 +4497,7 @@ Bug Fixes
 -  Fixed error being thrown after deleting the GSpawn object from the
    scene.
 
-.. _features-1:
+.. _features-2:
 
 Features
 ^^^^^^^^
@@ -4406,7 +4505,7 @@ Features
 -  Added new pivot type **FromPivotObject** when creating prefabs from
    selected objects.
 
-.. _improvements-5:
+.. _improvements-6:
 
 Improvements
 ^^^^^^^^^^^^
