@@ -2704,6 +2704,15 @@ Simply select prefabs in the **Prefab Manager** and then click on the green arro
 
 
 
+### GSpawn - Level Designer 3.2.3
+
+#### Bug Fixes
+
+- Fixed compile error that would occur in Unity 2021.3.27
+- Fixed exception being thrown when initializing GSpawn (bug introduced in GSpawn 3.2.2).
+
+
+
 ### GSpawn - Level Designer 3.2.2
 
 #### Features

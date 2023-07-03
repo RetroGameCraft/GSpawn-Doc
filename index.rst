@@ -4304,6 +4304,16 @@ green arrow button to simulate the drag and drop operation.
 Changelog
 ---------
 
+GSpawn - Level Designer 3.2.3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Bug Fixes
+^^^^^^^^^
+
+-  Fixed compile error that would occur in Unity 2021.3.27
+-  Fixed exception being thrown when initializing GSpawn (bug introduced
+   in GSpawn 3.2.2).
+
 GSpawn - Level Designer 3.2.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -4331,6 +4341,8 @@ Improvements
 -  Improved decor rule generation by ignoring added object overrides in
    prefab instance hierarchies which was causing large gather volumes to
    be generated leading to incorrect rules.
+
+.. _bug-fixes-1:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4365,7 +4377,7 @@ Improvements
    prefab with the smallest volume. This is more intuitive when using
    multiple prefabs for the same wall rule.
 
-.. _bug-fixes-1:
+.. _bug-fixes-2:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4399,7 +4411,7 @@ Improvements
    drop from the prefab manager to other windows such as curve prefab,
    random prefabs etc windows.
 
-.. _bug-fixes-2:
+.. _bug-fixes-3:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4431,7 +4443,7 @@ Improvements
 GSpawn - Level Designer 3.1.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-3:
+.. _bug-fixes-4:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4446,7 +4458,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-4:
+.. _bug-fixes-5:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4489,7 +4501,7 @@ Improvements
 GSpawn - Level Designer 3.1.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-5:
+.. _bug-fixes-6:
 
 Bug Fixes
 ^^^^^^^^^
