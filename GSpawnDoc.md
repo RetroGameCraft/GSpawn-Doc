@@ -2704,6 +2704,16 @@ Simply select prefabs in the **Prefab Manager** and then click on the green arro
 
 
 
+### GSpawn - Level Designer 3.2.5
+
+#### Bug Fixes
+
+- Fixed min/max random scale fields not behaving properly for curve prefabs.
+- Fixed forward axis min/max rotation using incorrect limits.
+- Fixed min/max random scale fields not behaving properly for scatter brush prefabs.
+
+
+
 ### GSpawn - Level Designer 3.2.4
 
 #### Improvements
