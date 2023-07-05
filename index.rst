@@ -4304,8 +4304,24 @@ green arrow button to simulate the drag and drop operation.
 Changelog
 ---------
 
+GSpawn - Level Designer 3.2.4
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Improvements
+^^^^^^^^^^^^
+
+-  Implemented snap modes for the **Props Spawn** tool.
+
+Bug Fixes
+^^^^^^^^^
+
+-  Fixed exception thrown when deleting prefab assets that are used as
+   wall prefabs.
+
 GSpawn - Level Designer 3.2.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _bug-fixes-1:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4332,6 +4348,8 @@ Features
    Preferences > GSpawn > Input**. It can be useful for recording video
    tutorials.
 
+.. _improvements-1:
+
 Improvements
 ^^^^^^^^^^^^
 
@@ -4342,7 +4360,7 @@ Improvements
    prefab instance hierarchies which was causing large gather volumes to
    be generated leading to incorrect rules.
 
-.. _bug-fixes-1:
+.. _bug-fixes-2:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4358,7 +4376,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-1:
+.. _improvements-2:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4377,7 +4395,7 @@ Improvements
    prefab with the smallest volume. This is more intuitive when using
    multiple prefabs for the same wall rule.
 
-.. _bug-fixes-2:
+.. _bug-fixes-3:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4402,7 +4420,7 @@ Features
    conjunction with the **Props Spawn** tool to speed up scene
    decoration.
 
-.. _improvements-2:
+.. _improvements-3:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4411,7 +4429,7 @@ Improvements
    drop from the prefab manager to other windows such as curve prefab,
    random prefabs etc windows.
 
-.. _bug-fixes-3:
+.. _bug-fixes-4:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4422,7 +4440,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-3:
+.. _improvements-4:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4443,7 +4461,7 @@ Improvements
 GSpawn - Level Designer 3.1.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-4:
+.. _bug-fixes-5:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4458,7 +4476,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-5:
+.. _bug-fixes-6:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4469,7 +4487,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-4:
+.. _improvements-5:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4489,7 +4507,7 @@ Improvements
 GSpawn - Level Designer 3.1.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-5:
+.. _improvements-6:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4501,7 +4519,7 @@ Improvements
 GSpawn - Level Designer 3.1.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-6:
+.. _bug-fixes-7:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4517,7 +4535,7 @@ Features
 -  Added new pivot type **FromPivotObject** when creating prefabs from
    selected objects.
 
-.. _improvements-6:
+.. _improvements-7:
 
 Improvements
 ^^^^^^^^^^^^

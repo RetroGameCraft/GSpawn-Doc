@@ -2704,6 +2704,18 @@ Simply select prefabs in the **Prefab Manager** and then click on the green arro
 
 
 
+### GSpawn - Level Designer 3.2.4
+
+#### Improvements
+
+- Implemented snap modes for the **Props Spawn** tool.
+
+#### Bug Fixes
+
+- Fixed exception thrown when deleting prefab assets that are used as wall prefabs.
+
+
+
 ### GSpawn - Level Designer 3.2.3
 
 #### Bug Fixes
