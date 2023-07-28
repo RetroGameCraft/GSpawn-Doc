@@ -23,6 +23,9 @@ available, it doesn’t contain a complete list. For a complete list of
 hotkeys, please see the **GSpawn - Shortcuts** document in the **GSpawn
 - Level Designer/Docs** folder.
 
+For **HDRP integration**, please see the **GSpawn - HDRP Integration**
+document inside the **GSpawn - Level Designer/Docs** folder.
+
 Support
 -------
 
@@ -4199,18 +4202,15 @@ Hints & Gotchas
    object groups when using the erase brush. Instead, try to make sure
    all object groups are either attached as children of other groups or
    have no parent at all;
-
 -  don’t move object groups between different scenes. The plugin uses a
    global id to store them internally and this id seems to change when
    the object is moved to a different scene. This can cause unexpected
    results;
-
 -  when combining meshes, if the **Generate lightmap UVs** toggle is
    checked, the mesh combine process can be slow. If you see the
    progress bar getting stuck at some point, don’t be misled into
    believing that the plugin crashed. If you wait a bit, you will see
    the progress bar coming back to life;
-
 -  when combining meshes, pressing the **Combine children** or **Combine
    selected** button will sometimes display a message box saying
    **“There were no meshes combined.”**. When this happens you should
@@ -4219,7 +4219,6 @@ Hints & Gotchas
    is possible for example that you might be dealing with static meshes
    only, but the **Combine static meshes** field is unchecked. Same with
    **dynamic meshes**;
-
 -  if you are using a skybox material in the **Lighting** window inside
    the **Environment** tab, prefab previews will be affected by it. If
    this affects the quality of the prefabs, you should disable the
@@ -4228,7 +4227,6 @@ Hints & Gotchas
    material again. If you find yourself adding and removing prefabs
    frequently, you might have to disable the skybox material until you
    finish working on your scene;
-
 -  when using **Curve Spawn**, instead of using multiple lanes, it may
    sometimes produce better results to use prefabs made out of multiple
    objects arranged in different configurations (e.g. a prefab
@@ -4236,38 +4234,12 @@ Hints & Gotchas
    same time, try to make sure that the area covered by a single prefab
    is not too large. Large objects do not always project correctly onto
    surfaces such as terrains especially where steep surfaces exist;
-
 -  when changing the color space, the console might get flooded with
    warning messages regarding an invalid render texture format. In order
    to fix this, switch to **Play Mode** and back. Whether these warnings
    appear or not, you will always have to refresh the prefab previews
    when you change the color space. In order to do this, click on
    **Tools > GSpawn > Actions > Refresh Prefab Previews**;
-
--  when using HDRP, you need to follow these steps in order for the
-   prefab previews to render correctly:
-
-   1. select the HDRP asset and set its color buffer format to a format
-      that has an alpha channel:
-
-      .. image:: hdrp_asset_alpha_color_format.png
-
-   2. go to **Edit > Project Settings > Player** and add the
-      **GSPAWN_HDRP** symbol:
-
-   .. image:: script_compile_hdrp.png
-
-   3. if you initialized GSpawn before enabling HDRP or before
-      performing these steps, click on **Tools > GSpawn > Actions >
-      Refresh Prefab Previews**.
-
-      --------------
-
-      **Note:**\ Even though this will render the prefab previews
-      correctly, the previews appear slightly darker than normal.
-      Currently, this issue remains unsolved.
-
-      --------------
 
 Known Issues
 ------------
@@ -4304,8 +4276,24 @@ green arrow button to simulate the drag and drop operation.
 Changelog
 ---------
 
+GSpawn - Level Designer 3.2.6
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Improvements
+^^^^^^^^^^^^
+
+-  Added GSpawn - HDRP Integration PDF file inside the Docs folder.
+
+Bug Fixes
+^^^^^^^^^
+
+-  Fixed null reference exception being thrown when pressing [K] to sync
+   grid size when no spawn guide exists in the scene.
+
 GSpawn - Level Designer 3.2.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _bug-fixes-1:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4319,12 +4307,14 @@ Bug Fixes
 GSpawn - Level Designer 3.2.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. _improvements-1:
+
 Improvements
 ^^^^^^^^^^^^
 
 -  Implemented snap modes for the **Props Spawn** tool.
 
-.. _bug-fixes-1:
+.. _bug-fixes-2:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4335,7 +4325,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-2:
+.. _bug-fixes-3:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4362,7 +4352,7 @@ Features
    Preferences > GSpawn > Input**. It can be useful for recording video
    tutorials.
 
-.. _improvements-1:
+.. _improvements-2:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4374,7 +4364,7 @@ Improvements
    prefab instance hierarchies which was causing large gather volumes to
    be generated leading to incorrect rules.
 
-.. _bug-fixes-3:
+.. _bug-fixes-4:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4390,7 +4380,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-2:
+.. _improvements-3:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4409,7 +4399,7 @@ Improvements
    prefab with the smallest volume. This is more intuitive when using
    multiple prefabs for the same wall rule.
 
-.. _bug-fixes-4:
+.. _bug-fixes-5:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4434,7 +4424,7 @@ Features
    conjunction with the **Props Spawn** tool to speed up scene
    decoration.
 
-.. _improvements-3:
+.. _improvements-4:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4443,7 +4433,7 @@ Improvements
    drop from the prefab manager to other windows such as curve prefab,
    random prefabs etc windows.
 
-.. _bug-fixes-5:
+.. _bug-fixes-6:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4454,7 +4444,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-4:
+.. _improvements-5:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4475,7 +4465,7 @@ Improvements
 GSpawn - Level Designer 3.1.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-6:
+.. _bug-fixes-7:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4490,7 +4480,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-7:
+.. _bug-fixes-8:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4501,7 +4491,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-5:
+.. _improvements-6:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4521,7 +4511,7 @@ Improvements
 GSpawn - Level Designer 3.1.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-6:
+.. _improvements-7:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4533,7 +4523,7 @@ Improvements
 GSpawn - Level Designer 3.1.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-8:
+.. _bug-fixes-9:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4549,7 +4539,7 @@ Features
 -  Added new pivot type **FromPivotObject** when creating prefabs from
    selected objects.
 
-.. _improvements-7:
+.. _improvements-8:
 
 Improvements
 ^^^^^^^^^^^^
