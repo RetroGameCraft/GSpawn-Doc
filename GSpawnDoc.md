@@ -499,18 +499,6 @@ The result can be seen in the next image:
 
 ---
 
-#### Requirements
-
-In order to use the **Modular Walls** spawn tool, the following conditions must be met:
-
-- the straight wall piece must be larger along the connection axis than it is along its inner axis (e.g. don't use cubes);
-- when creating the example prefab, the **MiddleStraight** piece must have a rotation of **0** for all axes;
-- all wall prefab pieces must have the same up axis (i.e. if you set the rotation of all wall piece prefabs to **0** on all axes, they must all point up along the same axis);
-
-- when using wall profiles with inner and outer corners, you should avoid situations where you create a turn immediately after a corner piece. This can create overlaps or gaps in the wall. The next image shows an example of this situation:
-
-![](wall_spawn_gap.png)
-
 #### Spawning Walls With No Inner/Outer Corners
 
 If you would like to spawn walls that don't have **Inner/Outer** corners, you can do that by following the next steps:
@@ -563,6 +551,33 @@ Next, you need to check the **Spawn pillars** toggle in the wall profile setting
 ![](wall_profile_settings_with_spawn_pillars.png)
 
 At this point you are ready to spawn walls/railings with pillars.
+
+Another category of pillars that can be used is pillars that is in the middle of the inner and outer corners as shown in the image below:
+
+![](pillar_mid_corner_ex_prefab.png)
+
+2 pillar objects have been used in this case:
+
+1. one pillar called **PillarOuterCornerMiddle** sitting in the middle of the outer corner;
+2. one pillar called **PillarInnerCornerMiddle** sitting in the middle of the inner corner;
+
+#### Requirements
+
+In order to use the **Modular Walls** spawn tool, the following conditions must be met:
+
+- the straight wall piece must be larger along the connection axis than it is along its inner axis (e.g. don't use cubes);
+- when creating the example prefab, the **MiddleStraight** piece must have a rotation of **0** for all axes;
+- all wall prefab pieces must have the same up axis (i.e. if you set the rotation of all wall piece prefabs to **0** on all axes, they must all point up along the same axis);
+
+- all wall pieces and pillars must have a scale of 1 for all axes;
+
+- all pillars except for the **PillarOuterCornerMiddle** & **PillarInnerCornerMiddle** must be rotation independent. This means, the pillars must look 'right' regardless of what their rotation is in the example prefab; 
+
+- when using wall profiles with inner and outer corners, you should avoid situations where you create a turn immediately after a corner piece. This can create overlaps or gaps in the wall. The next image shows an example of this situation:
+
+![](wall_spawn_gap.png)
+
+
 
 #### Reusing Example Prefabs
 
@@ -2679,6 +2694,15 @@ However, this doesn't seem to affect anything. It seems like this could be a kno
 Simply select prefabs in the **Prefab Manager** and then click on the green arrow button to simulate the drag and drop operation.
 
 ## Changelog
+
+
+
+### GSpawn - Level Designer 3.2.7
+
+#### Improvements
+
+- Improved modular wall pillar spawn when no inner/outer corner pieces are used (existing wall profiles that use pillars require pressing the **Refresh** button inside the **Modular Wall Prefab Profile** window).
+- Added 2 new pillars for modular walls: **PillarInnerCornerMiddle** & **PillarOuterCornerMiddle**.
 
 
 
