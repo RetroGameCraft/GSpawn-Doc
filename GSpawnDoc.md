@@ -561,6 +561,8 @@ Another category of pillars that can be used is pillars that is in the middle of
 1. one pillar called **PillarOuterCornerMiddle** sitting in the middle of the outer corner;
 2. one pillar called **PillarInnerCornerMiddle** sitting in the middle of the inner corner;
 
+In the image above, the same prefab was used for both pillars. However, you could have 2 different prefabs for each corner. In that case, you need to assign a tag to each pillar prefab. The **PillarOuterCornerMiddle** pillar must have a tag with the same name. Same for the **PillarInnerCornerMiddle**. Both pillars have to be assigned to the pillar random prefab profile.
+
 #### Requirements
 
 In order to use the **Modular Walls** spawn tool, the following conditions must be met:
@@ -2694,6 +2696,18 @@ However, this doesn't seem to affect anything. It seems like this could be a kno
 Simply select prefabs in the **Prefab Manager** and then click on the green arrow button to simulate the drag and drop operation.
 
 ## Changelog
+
+
+
+### GSpawn - Level Designer 3.2.8
+
+#### Improvements
+
+- Tags can now be assigned to **PillarInnerCornerMiddle** & **PillarOuterCornerOuter** pillar prefabs in a modular wall profile. This opens up the possibility of using different prefabs for the middle inner/outer pillars and it allows them to be picked correctly from the random prefab profile.
+
+#### Bug Fixes
+
+- Fixed spawning incorrect type of pillar in certain situations when spawning modular walls.
 
 
 

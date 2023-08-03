@@ -879,6 +879,13 @@ middle of the inner and outer corners as shown in the image below:
 2. one pillar called **PillarInnerCornerMiddle** sitting in the middle
    of the inner corner;
 
+In the image above, the same prefab was used for both pillars. However,
+you could have 2 different prefabs for each corner. In that case, you
+need to assign a tag to each pillar prefab. The
+**PillarOuterCornerMiddle** pillar must have a tag with the same name.
+Same for the **PillarInnerCornerMiddle**. Both pillars have to be
+assigned to the pillar random prefab profile.
+
 Requirements
 ^^^^^^^^^^^^
 
@@ -4295,8 +4302,28 @@ green arrow button to simulate the drag and drop operation.
 Changelog
 ---------
 
+GSpawn - Level Designer 3.2.8
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Improvements
+^^^^^^^^^^^^
+
+-  Tags can now be assigned to **PillarInnerCornerMiddle** &
+   **PillarOuterCornerOuter** pillar prefabs in a modular wall profile.
+   This opens up the possibility of using different prefabs for the
+   middle inner/outer pillars and it allows them to be picked correctly
+   from the random prefab profile.
+
+Bug Fixes
+^^^^^^^^^
+
+-  Fixed spawning incorrect type of pillar in certain situations when
+   spawning modular walls.
+
 GSpawn - Level Designer 3.2.7
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _improvements-1:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4311,12 +4338,14 @@ Improvements
 GSpawn - Level Designer 3.2.6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-1:
+.. _improvements-2:
 
 Improvements
 ^^^^^^^^^^^^
 
 -  Added GSpawn - HDRP Integration PDF file inside the Docs folder.
+
+.. _bug-fixes-1:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4327,7 +4356,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-1:
+.. _bug-fixes-2:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4341,14 +4370,14 @@ Bug Fixes
 GSpawn - Level Designer 3.2.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-2:
+.. _improvements-3:
 
 Improvements
 ^^^^^^^^^^^^
 
 -  Implemented snap modes for the **Props Spawn** tool.
 
-.. _bug-fixes-2:
+.. _bug-fixes-3:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4359,7 +4388,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-3:
+.. _bug-fixes-4:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4386,7 +4415,7 @@ Features
    Preferences > GSpawn > Input**. It can be useful for recording video
    tutorials.
 
-.. _improvements-3:
+.. _improvements-4:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4398,7 +4427,7 @@ Improvements
    prefab instance hierarchies which was causing large gather volumes to
    be generated leading to incorrect rules.
 
-.. _bug-fixes-4:
+.. _bug-fixes-5:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4414,7 +4443,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-4:
+.. _improvements-5:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4433,7 +4462,7 @@ Improvements
    prefab with the smallest volume. This is more intuitive when using
    multiple prefabs for the same wall rule.
 
-.. _bug-fixes-5:
+.. _bug-fixes-6:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4458,7 +4487,7 @@ Features
    conjunction with the **Props Spawn** tool to speed up scene
    decoration.
 
-.. _improvements-5:
+.. _improvements-6:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4467,7 +4496,7 @@ Improvements
    drop from the prefab manager to other windows such as curve prefab,
    random prefabs etc windows.
 
-.. _bug-fixes-6:
+.. _bug-fixes-7:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4478,7 +4507,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-6:
+.. _improvements-7:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4499,7 +4528,7 @@ Improvements
 GSpawn - Level Designer 3.1.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-7:
+.. _bug-fixes-8:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4514,7 +4543,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-8:
+.. _bug-fixes-9:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4525,7 +4554,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-7:
+.. _improvements-8:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4545,7 +4574,7 @@ Improvements
 GSpawn - Level Designer 3.1.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _improvements-8:
+.. _improvements-9:
 
 Improvements
 ^^^^^^^^^^^^
@@ -4557,7 +4586,7 @@ Improvements
 GSpawn - Level Designer 3.1.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-9:
+.. _bug-fixes-10:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4573,7 +4602,7 @@ Features
 -  Added new pivot type **FromPivotObject** when creating prefabs from
    selected objects.
 
-.. _improvements-9:
+.. _improvements-10:
 
 Improvements
 ^^^^^^^^^^^^
