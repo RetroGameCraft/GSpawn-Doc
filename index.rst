@@ -4302,6 +4302,22 @@ green arrow button to simulate the drag and drop operation.
 Changelog
 ---------
 
+GSpawn - Level Designer 3.2.81
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Bug Fixes
+^^^^^^^^^
+
+-  Fixed middle inner/outer pillars would not spawn if no tags were
+   assigned to them.
+-  Fixed wall prefab profile not updating correctly when changing the
+   state of the **Truncate forward size** toggle.
+-  Fixed wall prefab profile incorrectly calculating the forward size
+   causing the user to press the **Refresh** button needlessly.
+-  Fixed exception being thrown when deleting selected objects while
+   being manipulated via a transform session (e.g. modular snap, surface
+   snap etc).
+
 GSpawn - Level Designer 3.2.8
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -4313,6 +4329,8 @@ Improvements
    This opens up the possibility of using different prefabs for the
    middle inner/outer pillars and it allows them to be picked correctly
    from the random prefab profile.
+
+.. _bug-fixes-1:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4345,7 +4363,7 @@ Improvements
 
 -  Added GSpawn - HDRP Integration PDF file inside the Docs folder.
 
-.. _bug-fixes-1:
+.. _bug-fixes-2:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4356,7 +4374,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-2:
+.. _bug-fixes-3:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4377,7 +4395,7 @@ Improvements
 
 -  Implemented snap modes for the **Props Spawn** tool.
 
-.. _bug-fixes-3:
+.. _bug-fixes-4:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4388,7 +4406,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-4:
+.. _bug-fixes-5:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4427,7 +4445,7 @@ Improvements
    prefab instance hierarchies which was causing large gather volumes to
    be generated leading to incorrect rules.
 
-.. _bug-fixes-5:
+.. _bug-fixes-6:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4462,7 +4480,7 @@ Improvements
    prefab with the smallest volume. This is more intuitive when using
    multiple prefabs for the same wall rule.
 
-.. _bug-fixes-6:
+.. _bug-fixes-7:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4496,7 +4514,7 @@ Improvements
    drop from the prefab manager to other windows such as curve prefab,
    random prefabs etc windows.
 
-.. _bug-fixes-7:
+.. _bug-fixes-8:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4528,7 +4546,7 @@ Improvements
 GSpawn - Level Designer 3.1.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-8:
+.. _bug-fixes-9:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4543,7 +4561,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-9:
+.. _bug-fixes-10:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4586,7 +4604,7 @@ Improvements
 GSpawn - Level Designer 3.1.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-10:
+.. _bug-fixes-11:
 
 Bug Fixes
 ^^^^^^^^^

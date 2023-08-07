@@ -2699,6 +2699,17 @@ Simply select prefabs in the **Prefab Manager** and then click on the green arro
 
 
 
+### GSpawn - Level Designer 3.2.81
+
+#### Bug Fixes
+
+- Fixed middle inner/outer pillars would not spawn if no tags were assigned to them.
+- Fixed wall prefab profile not updating correctly when changing the state of the **Truncate forward size** toggle.
+- Fixed wall prefab profile incorrectly calculating the forward size causing the user to press the **Refresh** button needlessly.
+- Fixed exception being thrown when deleting selected objects while being manipulated via a transform session (e.g. modular snap, surface snap etc).
+
+
+
 ### GSpawn - Level Designer 3.2.8
 
 #### Improvements
