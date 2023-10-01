@@ -1,3 +1,6 @@
+.. toctree::
+   :maxdepth: 2
+
 .. image:: logo.png
 
 What is GSpawn - Level Designer?
