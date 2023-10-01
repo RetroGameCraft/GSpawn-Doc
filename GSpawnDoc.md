@@ -2699,7 +2699,22 @@ Simply select prefabs in the **Prefab Manager** and then click on the green arro
 
 
 
-### GSpawn - Level Designer 3.2.81
+### GSpawn - Level Designer 3.2.8.2
+
+#### Bug Fixes
+
+- Fixed prefab previews for LOD hierarchies not generated correctly.
+- Fixed selection wireframe not drawing correctly for child objects.
+- Fixed selection wireframe incorrectly drawing wireframe for invisible LODs.
+- Fixed selection gizmos obscured by selection wireframe.
+- Fixed selection rectangle not taking DPI settings into account.
+- Fixed selection outlines drawing as wireframe for unity versions newer than 2022.1.
+- Fixed tile rules evaluated incorrectly for certain tile rule configurations.
+- Fixed exception being thrown when spawning objects with curves.
+
+
+
+### GSpawn - Level Designer 3.2.8.1
 
 #### Bug Fixes
 
