@@ -1,8 +1,9 @@
 source_suffix = '.rst'
 master_doc = 'index'
 extensions = ['alabaster']
+html_theme = "sphinx_rtd_theme"
 html_theme_options = {
-    'prev_next_buttons_location': 'bottom',
+    #'prev_next_buttons_location': 'bottom',
     'style_external_links': False,
     'vcs_pageview_mode': '',
     #'style_nav_header_background': 'white',
