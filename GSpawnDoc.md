@@ -2699,6 +2699,21 @@ Simply select prefabs in the **Prefab Manager** and then click on the green arro
 
 
 
+### GSpawn - Level Designer 3.2.8.3
+
+#### Improvements
+
+- Pick spawn guide prefab key can now be configured from the **Preferences** window (GSpawn > Input).
+- Selection replace key can now be configured from the **Preferences** window (GSpawn > Input).
+
+#### Bug  Fixes
+
+- Fixed lag when switching to playmode caused data folder validation.
+- Fixed mouse scroll wheel not working on some systems.
+- Fixed no longer spawning object when **[ALT]** is pressed (i.e. camera orbit works properly).
+
+
+
 ### GSpawn - Level Designer 3.2.8.2
 
 #### Bug Fixes
