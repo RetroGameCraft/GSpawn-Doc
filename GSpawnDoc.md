@@ -158,7 +158,7 @@ In order to move prefabs from a library to another library, follow the next step
 
 ### Prefab Previews
 
-Prefab previews can be rotated by holding down the **middle mouse button** and moving the mouse. 
+Prefab previews can be rotated by holding down the **middle mouse button** and moving the mouse. **macOS** users have the option of using an alternative shortcut: **[ALT + right-click]** and drag the mouse. This can be enabled from **Edit > Preferences > GSpawn > Input** under the **macOS** section.
 
 ![](prefab_preview_ui.png)
 
@@ -2696,6 +2696,20 @@ However, this doesn't seem to affect anything. It seems like this could be a kno
 Simply select prefabs in the **Prefab Manager** and then click on the green arrow button to simulate the drag and drop operation.
 
 ## Changelog
+
+
+
+### GSpawn - Leve Designer 3.2.8.4
+
+#### Improvements
+
+- When prefabs are dragged from the prefab manager onto prefab library items, the destination library is no longer selected.
+- Added option for **macOS** users for using **[ALT + right-click]** to rotate prefab previews.
+
+#### Bug Fixes
+
+- Fixed **[SHIFT + X/Y/Z]** in selection mode not calculating rotation center properly;
+- Fixed prefabs not being dropped on library hovered by mouse cursor;
 
 
 
