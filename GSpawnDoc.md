@@ -2699,7 +2699,15 @@ Simply select prefabs in the **Prefab Manager** and then click on the green arro
 
 
 
-### GSpawn - Leve Designer 3.2.8.4
+### GSpawn - Level Designer 3.2.8.5
+
+#### Bug Fixes
+
+- Fixed null ref exception when drag and dropping prefab folders in prefab manager UI.
+
+
+
+### GSpawn - Level Designer 3.2.8.4
 
 #### Improvements
 
@@ -2708,8 +2716,8 @@ Simply select prefabs in the **Prefab Manager** and then click on the green arro
 
 #### Bug Fixes
 
-- Fixed **[SHIFT + X/Y/Z]** in selection mode not calculating rotation center properly;
-- Fixed prefabs not being dropped on library hovered by mouse cursor;
+- Fixed **[SHIFT + X/Y/Z]** in selection mode not calculating rotation center properly.
+- Fixed prefabs not being dropped on library hovered by mouse cursor.
 
 
 
