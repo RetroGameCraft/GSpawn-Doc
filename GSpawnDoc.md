@@ -2699,6 +2699,22 @@ Simply select prefabs in the **Prefab Manager** and then click on the green arro
 
 
 
+### GSpawn - Level Designer 3.2.8.6
+
+#### Features
+
+- Added button to delete obscured tiles when working with tile rule grids.
+
+#### Improvements
+
+- Added button in object group window to simulate drag and drop on macOS.
+
+#### Bug Fixes
+
+- Fixed error which would show up when attempting to drop prefab onto the Prefab Library Db Window, in empty space (i.e. mouse not hovering library item).
+
+
+
 ### GSpawn - Level Designer 3.2.8.5
 
 #### Bug Fixes
