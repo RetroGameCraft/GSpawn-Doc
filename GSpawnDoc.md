@@ -2699,6 +2699,24 @@ Simply select prefabs in the **Prefab Manager** and then click on the green arro
 
 
 
+### GSpawn - Level Designer 3.2.9
+
+#### Features
+
+- Added **[CTRL + SPACE + scroll wheel]** shortcut for scrolling spawn guide prefab.
+- Added **GSPAWN_ALWAYS_UPDATE_DATA_FOLDERS** scripting symbol.
+
+#### Improvements
+
+- Memory optimization when populating prefab library database.
+- Resources folder is now child of Editor folder.
+
+#### Bug Fixes:
+
+- Fixed errors generated when invoking action menu items when no **GSpawn** object exists in the scene.
+
+
+
 ### GSpawn - Level Designer 3.2.8.6
 
 #### Features
