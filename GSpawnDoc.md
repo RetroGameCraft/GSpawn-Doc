@@ -2699,6 +2699,14 @@ Simply select prefabs in the **Prefab Manager** and then click on the green arro
 
 
 
+### GSpawn - Level Designer 3.2.9.1
+
+#### Bug Fixes
+
+- Fixed plugin handling object group hierarchy changed events even while app is playing.
+
+  
+
 ### GSpawn - Level Designer 3.2.9
 
 #### Features
