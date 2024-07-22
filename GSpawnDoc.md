@@ -2699,6 +2699,19 @@ Simply select prefabs in the **Prefab Manager** and then click on the green arro
 
 
 
+### GSpawn - Level Designer 3.2.9.2
+
+#### Features
+
+- Added negative padding support for the extrude gizmo.
+
+#### Bug Fixes
+
+- Fixed missing GUI icon in Unity 6000.
+- Fixed Unity 6000 warnings.
+
+
+
 ### GSpawn - Level Designer 3.2.9.1
 
 #### Bug Fixes

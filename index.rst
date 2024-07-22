@@ -4305,8 +4305,24 @@ green arrow button to simulate the drag and drop operation.
 Changelog
 ---------
 
+GSpawn - Level Designer 3.2.9.2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Features
+^^^^^^^^
+
+-  Added negative padding support for the extrude gizmo.
+
+Bug Fixes
+^^^^^^^^^
+
+-  Fixed missing GUI icon in Unity 6000.
+-  Fixed Unity 6000 warnings.
+
 GSpawn - Level Designer 3.2.9.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _bug-fixes-1:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4316,6 +4332,8 @@ Bug Fixes
 
 GSpawn - Level Designer 3.2.9
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _features-1:
 
 Features
 ^^^^^^^^
@@ -4330,7 +4348,7 @@ Improvements
 -  Memory optimization when populating prefab library database.
 -  Resources folder is now child of Editor folder.
 
-.. _bug-fixes-1:
+.. _bug-fixes-2:
 
 Bug Fixes:
 ^^^^^^^^^^
@@ -4341,7 +4359,7 @@ Bug Fixes:
 GSpawn - Level Designer 3.2.8.6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _features-1:
+.. _features-2:
 
 Features
 ^^^^^^^^
@@ -4357,7 +4375,7 @@ Improvements
 -  Added button in object group window to simulate drag and drop on
    macOS.
 
-.. _bug-fixes-2:
+.. _bug-fixes-3:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4369,7 +4387,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.8.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-3:
+.. _bug-fixes-4:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4390,7 +4408,7 @@ Improvements
 -  Added option for **macOS** users for using **[ALT + right-click]** to
    rotate prefab previews.
 
-.. _bug-fixes-4:
+.. _bug-fixes-5:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4412,7 +4430,7 @@ Improvements
 -  Selection replace key can now be configured from the **Preferences**
    window (GSpawn > Input).
 
-.. _bug-fixes-5:
+.. _bug-fixes-6:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4425,7 +4443,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.8.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-6:
+.. _bug-fixes-7:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4445,7 +4463,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.8.1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-7:
+.. _bug-fixes-8:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4474,7 +4492,7 @@ Improvements
    middle inner/outer pillars and it allows them to be picked correctly
    from the random prefab profile.
 
-.. _bug-fixes-8:
+.. _bug-fixes-9:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4507,7 +4525,7 @@ Improvements
 
 -  Added GSpawn - HDRP Integration PDF file inside the Docs folder.
 
-.. _bug-fixes-9:
+.. _bug-fixes-10:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4518,7 +4536,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.5
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-10:
+.. _bug-fixes-11:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4539,7 +4557,7 @@ Improvements
 
 -  Implemented snap modes for the **Props Spawn** tool.
 
-.. _bug-fixes-11:
+.. _bug-fixes-12:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4550,7 +4568,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-12:
+.. _bug-fixes-13:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4562,7 +4580,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _features-2:
+.. _features-3:
 
 Features
 ^^^^^^^^
@@ -4591,7 +4609,7 @@ Improvements
    prefab instance hierarchies which was causing large gather volumes to
    be generated leading to incorrect rules.
 
-.. _bug-fixes-13:
+.. _bug-fixes-14:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4626,7 +4644,7 @@ Improvements
    prefab with the smallest volume. This is more intuitive when using
    multiple prefabs for the same wall rule.
 
-.. _bug-fixes-14:
+.. _bug-fixes-15:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4642,7 +4660,7 @@ Bug Fixes
 GSpawn - Level Designer 3.2.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _features-3:
+.. _features-4:
 
 Features
 ^^^^^^^^
@@ -4660,7 +4678,7 @@ Improvements
    drop from the prefab manager to other windows such as curve prefab,
    random prefabs etc windows.
 
-.. _bug-fixes-15:
+.. _bug-fixes-16:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4692,7 +4710,7 @@ Improvements
 GSpawn - Level Designer 3.1.4
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-16:
+.. _bug-fixes-17:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4707,7 +4725,7 @@ Bug Fixes
 GSpawn - Level Designer 3.1.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-17:
+.. _bug-fixes-18:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4750,7 +4768,7 @@ Improvements
 GSpawn - Level Designer 3.1.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _bug-fixes-18:
+.. _bug-fixes-19:
 
 Bug Fixes
 ^^^^^^^^^
@@ -4758,7 +4776,7 @@ Bug Fixes
 -  Fixed error being thrown after deleting the GSpawn object from the
    scene.
 
-.. _features-4:
+.. _features-5:
 
 Features
 ^^^^^^^^
