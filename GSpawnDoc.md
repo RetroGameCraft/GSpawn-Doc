@@ -2689,13 +2689,22 @@ You **can not export** the following:
 
 However, this doesn't seem to affect anything. It seems like this could be a known bug in Unity. More info [here](https://forum.unity.com/threads/importer-monoimporter-generated-inconsistent-result-for-asset.1018768/).
 
-- Mac users may not be able to drag and drop prefabs from the prefab manager onto other windows such as the **Curve Prefab Profile** window for example. If this happens, you can use the green arrow button which exists in all windows in which prefabs can be dropped from the prefab manager:
 
-![](green_arrow_prefab_drag_alternative.png)
-
-Simply select prefabs in the **Prefab Manager** and then click on the green arrow button to simulate the drag and drop operation.
 
 ## Changelog
+
+
+
+### GSpawn - Level Designer 3.3
+
+#### Features
+
+- Implemented **bump height** for 3D Erase Brush.
+
+#### Bug Fixes
+
+- Fixed drag and drop issue on **macOS**.
+- Fixed 3D Erase Brush not erasing objects correctly in partial overlap mode.
 
 
 
